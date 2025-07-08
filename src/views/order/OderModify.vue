@@ -51,7 +51,7 @@
         <div class="row gx-4">
           <div class="col-auto">
             <div class="avatar avatar-xl position-relative">
-              <img src="../assets/img/team-1.jpg" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+              <img src="@/assets/img/team-1.jpg" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
             </div>
           </div>
           <div class="col-auto my-auto">
@@ -91,7 +91,7 @@
             <div class="card-header pb-0">
               <div class="d-flex align-items-center">
                 <p class="mb-0">주문상세</p>
-                <button class="btn btn-primary btn-sm ms-auto">주문생성</button>
+                <button class="btn btn-primary btn-sm ms-auto">주문수정</button>
               </div>
             </div>
             <div class="card-body">
@@ -170,6 +170,18 @@
                   </div>
                 </div>
               </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="radioDefault" id="radioDefault1">
+                <label class="form-check-label" for="radioDefault1">
+                  환불요청
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="radioDefault" id="radioDefault2" checked>
+                <label class="form-check-label" for="radioDefault2">
+                  교환요청
+                </label>
+              </div>
               <hr class="horizontal dark">
               <p class="text-uppercase text-sm">요구사항</p>
               <div class="row">
@@ -191,12 +203,12 @@
         </div>
         <div class="col-md-4">
           <div class="card card-profile">
-            <img src="../assets/img/bg-profile.jpg" alt="Image placeholder" class="card-img-top">
+            <img src="@/assets/img/bg-profile.jpg" alt="Image placeholder" class="card-img-top">
             <div class="row justify-content-center">
               <div class="col-4 col-lg-4 order-lg-2">
                 <div class="mt-n4 mt-lg-n6 mb-4 mb-lg-0">
                   <a href="javascript:;">
-                    <img src="../assets/img/team-2.jpg" class="rounded-circle img-fluid border border-2 border-white">
+                    <img src="@/assets/img/team-2.jpg" class="rounded-circle img-fluid border border-2 border-white">
                   </a>
                 </div>
               </div>

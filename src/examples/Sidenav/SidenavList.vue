@@ -69,13 +69,27 @@ onMounted(() => {
 
       <li class="nav-item">
         <sidenav-item
-          to="/tables"
+          to="/buyerlist"
           :class="getRoute() === 'tables' ? 'active' : ''"
           :navText="isRTL ? 'الجداول' : '주문관리'"
         >
           <template v-slot:icon>
             <i
               class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"
+            ></i>
+          </template>
+        </sidenav-item>
+      </li>
+
+      <li class="nav-item">
+        <sidenav-item
+          to="/farmlist"
+          :class="getRoute() === 'tables' ? 'active' : ''"
+          :navText="isRTL ? 'الجداول' : '상품 검색'"
+        >
+          <template v-slot:icon>
+            <i
+              class="ni ni-basket text-success text-sm opacity-10"
             ></i>
           </template>
         </sidenav-item>

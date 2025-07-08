@@ -7,6 +7,9 @@ import RTL from "../views/Rtl.vue";
 import Profile from "../views/Profile.vue";
 import Signup from "../views/Signup.vue";
 import Signin from "../views/Signin.vue";
+import BuyerList from "../views/order/BuyerList.vue";
+import FarmList from "../views/order/FarmList.vue";
+import FarmerList from "../views/order/FarmList.vue";
 
 const routes = [
   {
@@ -54,6 +57,26 @@ const routes = [
     name: "Signup",
     component: Signup,
   },
+  {
+    path: "/signup",
+    name: "Signup",
+    component: Signup,
+  },
+  {
+    path: "/buyerlist",
+    name: "BuyerList",
+    component: BuyerList
+  },
+  {
+    path: "/farmlist",
+    name: "FarmList",
+    component: FarmList
+  },
+  {
+    path: "/farmerlist",
+    name: "FarmerList",
+    component: FarmerList
+  }
 ];
 
 const router = createRouter({
