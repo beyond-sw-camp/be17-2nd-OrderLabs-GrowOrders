@@ -1,13 +1,16 @@
 <script setup>
 import { onBeforeUnmount, onBeforeMount } from "vue";
 import { useUserStore } from '@/store/users/login.js';
-import { ref } from "vue";
+import { ref, reactive } from 'vue';
 import { useStore } from "vuex";
 import { useRouter } from 'vue-router';
 import Navbar from "@/examples/PageLayout/Navbar.vue";
 import ArgonInput from "@/components/ArgonInput.vue";
 import ArgonSwitch from "@/components/ArgonSwitch.vue";
 import ArgonButton from "@/components/ArgonButton.vue";
+import SelectPosition from "../components/SelectPosition.vue";
+import farmerApi from "@/api/users/login.js";
+
 
 const body = document.getElementsByTagName("body")[0];
 const store = useStore();
@@ -17,6 +20,18 @@ const userStore = useUserStore();
 const email = ref("");
 const password = ref("");
 const rememberMe = ref(false);
+let loginType = ref("");
+
+const signinForm = reactive({
+    email: "",
+    password: "",
+    type: ""
+})
+
+const onPickedChange = (val) => {
+  loginType.value = val;
+};
+
 
 onBeforeMount(() => {
   store.state.hideConfigButton = true;
@@ -34,31 +49,26 @@ onBeforeUnmount(() => {
   body.classList.add("bg-gray-100");
 });
 
-const onSubmit = () => {
-  // 입력값 검증
+const onSubmit = async () => {
   if (!email.value || !password.value) {
     alert("이메일과 비밀번호를 입력해주세요.");
     return;
   }
 
-  // 백엔드 통신 (예시)
-  /*
-  userStore.login({
-    email: email.value,
-    password: password.value,
-    remember: rememberMe.value
-  })
-  .then(() => {
-    userStore.setWithEncrypt();
+  let data;
+  if (loginType.value === 1) {
+    data = await farmerApi.farmerList(signinForm);
+  } else {
+    data = await farmerApi.buyerList(signinForm);
+  }
+
+  if (data && data.length > 0) {
+    userStore.login(data[0]);
     router.push("/");
-  })
-  .catch(error => {
-    alert(error.message);
-  });
-  */
-  
-  // 임시 처리 (실제로는 위의 주석 처리된 코드 사용)
-  userStore.login();
+  } else {
+    alert("로그인에 실패했습니다.");
+  }
+
   router.push("/");
 };
 </script>
@@ -92,7 +102,7 @@ const onSubmit = () => {
                       <argon-input
                         v-model="email"
                         type="email"
-                        placeholder="아이디"
+                        placeholder="이메일"
                         name="email"
                         size="lg"
                         @keyup.enter="onSubmit"
@@ -108,6 +118,10 @@ const onSubmit = () => {
                         @keyup.enter="onSubmit"
                       />
                     </div>
+
+                    <label class="form-label fw-bold text-dark">회원 유형 선택</label>
+                    <SelectPosition class="mb-3" @update="onPickedChange" v-model="loginType"></SelectPosition>
+
                     <argon-switch 
                       v-model="rememberMe"
                       id="rememberMe" 
@@ -125,7 +139,7 @@ const onSubmit = () => {
                         size="lg"
                         type="submit"
                       >
-                        회원 가입하기
+                        로그인
                       </argon-button>
                     </div>
                   </form>
@@ -137,7 +151,7 @@ const onSubmit = () => {
                       href="javascript:;"
                       class="text-success text-gradient font-weight-bold"
                     >
-                      회원가입하기
+                      회원 가입하기
                     </a>
                   </p>
                 </div>

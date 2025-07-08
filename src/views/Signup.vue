@@ -8,7 +8,7 @@ import ArgonInput from "@/components/ArgonInput.vue";
 import ArgonCheckbox from "@/components/ArgonCheckbox.vue";
 import ArgonButton from "@/components/ArgonButton.vue";
 import BirthDay from "../components/BirthDay.vue";
-import SelectPosition from "./components/SelectPosition.vue";
+import SelectPosition from "../components/SelectPosition.vue";
 import CellPhone from "../components/CellPhone.vue"
 const body = document.getElementsByTagName("body")[0];
 

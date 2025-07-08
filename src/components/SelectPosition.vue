@@ -1,24 +1,28 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 
-const picked = ref('One'); // 기본 선택값 설정
+const emit = defineEmits(['update']);
+
+const picked = ref(1);
+
+watch(picked, (newVal) => {
+  emit('update', newVal);
+});
 </script>
 
 <template>
   <div>
     <div class="radio-group">
-        <label>
-        <input type="radio" value="농부" v-model="picked" />
+      <label>
+        <input type="radio" :value="1" v-model="picked" />
         <span class="small-text">농부</span>
       </label>
 
       <label>
-        <input type="radio" value="구매자" v-model="picked" />
+        <input type="radio" :value="2" v-model="picked" />
         <span class="small-text">구매자</span>
       </label>
-
     </div>
-    <!-- <div class="picked-text">Picked: {{ picked }}</div> -->
   </div>
 </template>
 
@@ -31,12 +35,11 @@ const picked = ref('One'); // 기본 선택값 설정
 }
 
 .radio-group input[type="radio"] {
-  width: 14px;   /* 기본 18px보다 작게 */
+  width: 14px;
   height: 14px;
   margin-right: 6px;
   cursor: pointer;
 }
-
 
 .radio-group label {
   display: flex;
@@ -45,13 +48,6 @@ const picked = ref('One'); // 기본 선택값 설정
   font-weight: 600;
   font-size: 16px;
   user-select: none;
-}
-
-.radio-group input[type="radio"] {
-  margin-right: 8px;
-  width: 18px;
-  height: 18px;
-  cursor: pointer;
 }
 
 .picked-text {
