@@ -1,0 +1,40 @@
+{
+  "title": "최근 주문자 정보",
+  "orders": [
+    {
+      "img": "boy.png",
+      "name": "이시욱",
+      "item": "토마토",
+      "itemsSold": 2500,
+      "orderAmount": 230900
+    },
+    {
+      "img": "man.png",
+      "name": "구창모",
+      "item": "파프리카",
+      "itemsSold": 3900,
+      "orderAmount": 440000
+    },
+    {
+      "img": "girl.png",
+      "name": "유현경",
+      "item": "딸기",
+      "itemsSold": 1400,
+      "orderAmount": 190700
+    },
+    {
+      "img": "woman.png",
+      "name": "윤소민",
+      "item": "딸기",
+      "itemsSold": 562,
+      "orderAmount": 143960
+    },
+    {
+      "img": "boy.png",
+      "name": "홍길동",
+      "item": "딸기",
+      "itemsSold": 234,
+      "orderAmount": 123456
+    }
+  ]
+}

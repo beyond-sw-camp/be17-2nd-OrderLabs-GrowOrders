@@ -1,0 +1,103 @@
+{
+  "charts": [
+    {
+      "id": "tomato",
+      "title": "Tomato Sales Overview",
+      "chart": {
+        "labels": [
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct",
+          "Nov",
+          "Dec"
+        ],
+        "datasets": [
+          {
+            "label": "Mobile Apps",
+            "data": [
+              50,
+              40,
+              300,
+              220,
+              500,
+              250,
+              400,
+              230,
+              500
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "paprika",
+      "title": "Paprika Sales Overview",
+      "chart": {
+        "labels": [
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct",
+          "Nov",
+          "Dec"
+        ],
+        "datasets": [
+          {
+            "label": "Mobile Apps",
+            "data": [
+              60,
+              50,
+              320,
+              240,
+              520,
+              270,
+              420,
+              250,
+              520
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "strawberry",
+      "title": "Strawberry Sales Overview",
+      "chart": {
+        "labels": [
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct",
+          "Nov",
+          "Dec"
+        ],
+        "datasets": [
+          {
+            "label": "Mobile Apps",
+            "data": [
+              70,
+              60,
+              340,
+              260,
+              540,
+              290,
+              440,
+              270,
+              540
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "date": "2025-07-02",
+  "farm_monitoring": [
+    {
+      "indicator": "일사량",
+      "unit": "J/cm²/day",
+      "value": 1540,
+      "status": "60%"
+    },
+    {
+      "indicator": "외기 기온",
+      "unit": "°C",
+      "value": 22.8,
+      "status": "10%"
+    },
+    {
+      "indicator": "일일 평균 온도",
+      "unit": "°C",
+      "value": 25.2,
+      "status": "100%"
+    },
+    {
+      "indicator": "예상 생산량",
+      "unit": "",
+      "value": 0.6,
+      "status": "60%"
+    },
+    {
+      "indicator": "주간 평균 습도",
+      "unit": "%",
+      "value": 77.4,
+      "status": "25%"
+    },
+    {
+      "indicator": "잔존 Co2",
+      "unit": "ppm",
+      "value": 1.10,
+      "status": "40%"
+    }
+  ]
+}
