@@ -1,34 +1,6 @@
-![OrderLabs](./images/Banner.png)
+![OrderLabs](@/assets/img/readme/Banner.png)
 
 <h1 align="center" style="color: #50C878;"> OrderLabs 🌿</h1>
-
-<br><br>
-
-## 💭 프로젝트 개요
-
-![Grafana](./images/Grafana.png)
-
-<br>
-
-- 프로젝트 기획서 작성
-- 요구사항 정의서 작성
-- ERD 작성
-- Database Architecture 작성
-- SQL 튜닝 (쿼리 구조 변경 및 Index 사용)
-
-<br>
-
-#### + 프로젝트 구성환경
-
-- Mariadb, 10.6.22 version
-- Mysql, 8.0.42 version (EXPLAIN과 EXPLAIN ALYZE 확인용)
-- JMeter
-- Prometheus
-- Grafana
-
-<br>
-
-**JMeter**로 **Database**에 직접 부하를 주어 **Prometheus**와 **Grafana**를 통해 부하 양상을 시각적으로 관찰할 하였고, SQL 튜닝을 통해 성능 향상을 기대하였지만 데이터 수의 부족으로 극적인 성능 향상은 얻지 못했지만, Mariadb가 아닌 Mysql로 데이터 베이스를 변경하여 `EXPLAIN`과 `EXPLAIN ANALYZE` 문을 통해 성능 향상을 확인할 수 있었다.
 
 <br><br>
 
