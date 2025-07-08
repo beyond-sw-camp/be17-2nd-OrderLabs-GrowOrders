@@ -121,9 +121,10 @@ onMounted(() => {
         </sidenav-item>
       </li>
 
+      <!--생물등록 to 수정-->
       <li class="nav-item" v-if="type === 1">
         <sidenav-item
-          to="/virtual-reality"
+          to="/crop-register"
           :class="getRoute() === 'virtual-reality' ? 'active' : ''"
           :navText="isRTL ? 'الواقع الافتراضي' : '생물등록'"
         >

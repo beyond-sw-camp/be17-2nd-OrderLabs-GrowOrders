@@ -10,8 +10,10 @@ import Signin from "../views/Signin.vue";
 import BuyerList from "../views/order/BuyerList.vue";
 import FarmList from "../views/order/FarmList.vue";
 import FarmerList from "../views/order/FarmList.vue";
-//알림 추가
+// 알림 추가
 import Notification from "../views/Notification.vue";
+// 생물 등록
+import Crop_register from "../views/Crop_register.vue";
 
 const routes = [
   {
@@ -84,6 +86,12 @@ const routes = [
     path: "/notification",
     name: "Notification",
     component: Notification
+  },
+   // 추가
+   {
+    path: "/crop-register",
+    name: "Crop Register",
+    component: Crop_register
   }
 ];
 
