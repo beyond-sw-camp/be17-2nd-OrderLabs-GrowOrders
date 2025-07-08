@@ -9,7 +9,7 @@ import ArgonCheckbox from "@/components/ArgonCheckbox.vue";
 import ArgonButton from "@/components/ArgonButton.vue";
 import BirthDay from "../components/BirthDay.vue";
 import SelectPosition from "./components/SelectPosition.vue";
-import CellPhone from "./components/CellPhone.vue";
+import CellPhone from "../components/CellPhone.vue"
 const body = document.getElementsByTagName("body")[0];
 
 const store = useStore();
@@ -48,10 +48,9 @@ onBeforeUnmount(() => {
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-5 text-center mx-auto">
-            <h1 class="text-white mb-2 mt-5">Welcome!</h1>
+            <h1 class="text-white mb-2 mt-5">어서오세요!</h1>
             <p class="text-lead text-white">
-              Use these awesome forms to login or create new account in your
-              project for free.
+              이 멋진 양식을 사용하여 프로젝트에 로그인하거나 새 계정을 무료로 만드세요.
             </p>
           </div>
         </div>
@@ -178,21 +177,21 @@ onBeforeUnmount(() => {
                 <argon-input
                   id="name"
                   type="text"
-                  placeholder="Name"
+                  placeholder="아이디 입력"
                   aria-label="Name"
                 />
                 <label class="form-label fw-bold text-dark mb-2">비밀번호</label>
                 <argon-input
                   id="password"
                   type="password"
-                  placeholder="비밀번호"
+                  placeholder="비밀번호 입력"
                   aria-label="Password"
                 />
                 <label class="form-label fw-bold text-dark mb-2">비밀번호 확인</label>
                 <argon-input
                   id="password"
                   type="password"
-                  placeholder="Password"
+                  placeholder="비밀번호 입력"
                   aria-label="Password"
                 />
                 <label class="form-label fw-bold text-dark mb-2">이름</label>
@@ -206,27 +205,30 @@ onBeforeUnmount(() => {
                 <argon-input
                   id="email"
                   type="email"
-                  placeholder="E-mail"
+                  placeholder="이메일 입력"
                   aria-label="email"
                 />
                 <label class="form-label fw-bold text-dark mb-2">생년월일</label>
                 <BirthDay
+                class="mb-3"
                 size="birthday"
                 success="true"
                 isRequired="true"
                 modelValue=""></BirthDay>
-                <label class="form-label fw-bold text-dark mb-2">휴대폰 번호</label>
-                <CellPhone></CellPhone>
-                <label class="form-label fw-bold text-dark mt-2">회원 유형 선택</label>
-                <SelectPosition></SelectPosition>
-                <argon-checkbox class="form-label fw-bold text-dark mb-2" checked>
-                  <label class="form-check-label" for="flexCheckDefault">
-                    I agree the
-                    <a href="javascript:;" class="text-dark font-weight-bolder"
-                      >Terms and Conditions</a
-                    >
-                  </label>
-                </argon-checkbox>
+                <label class="form-label fw-bold text-dark">휴대폰 번호</label>
+                <CellPhone class="mb-3"></CellPhone>
+                <label class="form-label fw-bold text-dark">회원 유형 선택</label>
+                <SelectPosition class="mb-3"></SelectPosition>
+
+                  <argon-checkbox class="form-label fw-bold text-dark" style="margin-bottom: 4px; margin-top: 70px;" checked>
+                    <label class="form-check-label" for="flexCheckDefault">
+                      약관에
+                      <a href="javascript:;" class="text-dark font-weight-bolder">
+                        동의합니다.
+                      </a>
+                    </label>
+                  </argon-checkbox>
+
                 <div class="text-center">
                   <argon-button
                     fullWidth

@@ -1,6 +1,6 @@
 <script setup>
 import { ref, watch } from 'vue';
-import ArgonButton from '../../components/ArgonButton.vue'
+// import ArgonButton from '../components/ArgonButton.vue'
 const emit = defineEmits(['update:modelValue', 'submit']);
 
 const props = defineProps({
@@ -112,17 +112,13 @@ function onSubmit() {
         autocomplete="off"
       />
   
-      <ArgonButton
+      <div class="send-button send-button:hover"
         type="button"
-        :class="[
-          getClasses(size, success, error),
-          'custom-phone-submit-button'
-        ]"
         :disabled="!canSubmit()"
         @click="onSubmit"
       >
         전송
-      </ArgonButton>
+      </div>
     </div>
   </template>
   
@@ -142,5 +138,25 @@ function onSubmit() {
     background-color: #a3d8c9;
     cursor: not-allowed;
   }
+
+  .send-button {
+  height: 40px;
+  line-height: 40px; /* 높이와 맞추기 */
+  padding: 0 16px;
+  font-size: 14px;
+  border-radius: 4px;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  cursor: pointer;
+
+  white-space: nowrap;
+  text-align: center;
+}
+
+.send-button:hover {
+  background-color: #357ab8;
+}
+
   </style>
   
