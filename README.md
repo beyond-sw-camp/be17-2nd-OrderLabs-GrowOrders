@@ -1,6 +1,6 @@
-![OrderLabs](@assets/img/readme/Banner.png)
-
 <h1 align="center" style="color: #50C878;"> OrderLabs 🌿</h1>
+
+![OrderLabs](@assets/img/readme/Banner.png)
 
 ## 🧑🏻‍🌾 프로젝트 소개
 
