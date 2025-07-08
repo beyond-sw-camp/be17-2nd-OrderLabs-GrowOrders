@@ -43,9 +43,21 @@ const closeMenu = () => {
   }, 100);
 };
 
+
+
 // 컴포넌트 마운트 시
 onMounted(() => {
   checkAuth();
+});
+
+const userTypeName = computed(() => {
+  console.log("USER TYPE" + userStore.userInfo.type);
+  if (!userStore.userInfo) return '';
+  return userStore.userInfo.type === 1
+    ? '농부님'
+    : userStore.userInfo.type === 2
+      ? '구매자님'
+      : '회원님';
 });
 </script>
 <template>
@@ -90,7 +102,9 @@ onMounted(() => {
               target="_blank"
             >
               <i class="fa fa-user" :class="isRTL ? 'ms-sm-2' : 'me-sm-2'"></i>
-              <span v-if="userStore.isLogin" class="d-sm-inline d-none">반갑습니다 {{ username }} 농부님 !!</span>
+              <span v-if="userStore.isLogin" class="d-sm-inline d-none">
+                반갑습니다 {{ username }} {{ userTypeName }} !!
+              </span>
               <span v-else class="d-sm-inline d-none">Sign In</span>
             </router-link>
           </li>

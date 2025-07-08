@@ -1,18 +1,41 @@
 <script setup>
-import { computed } from "vue";
+import { computed, ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { useStore } from "vuex";
+import { useUserStore } from '@/store/users/login.js';
 
 import SidenavItem from "./SidenavItem.vue";
 
 const store = useStore();
 const isRTL = computed(() => store.state.isRTL);
+const userStore = useUserStore();
+
+let type = ref(1);
+
+// 로그인 타입 확인
+const checkType = async () => {
+  if (!userStore.userInfo || typeof userStore.userInfo.type === 'undefined') {
+    console.warn("userInfo가 아직 로드되지 않았습니다.");
+    type.value = null;
+    return;
+  }
+
+  type.value = userStore.userInfo.type;
+  console.log("로그인 타입:", type.value);
+};
+
 
 const getRoute = () => {
   const route = useRoute();
   const routeArr = route.path.split("/");
   return routeArr[1];
 };
+
+onMounted(() => {
+  userStore.checkLogin();
+  checkType();
+});
+
 </script>
 <template>
   <div
@@ -20,7 +43,7 @@ const getRoute = () => {
     id="sidenav-collapse-main"
   >
     <ul class="navbar-nav">
-      <li class="nav-item">
+      <li class="nav-item" v-if="type === 1">
         <sidenav-item
           to="/dashboard-default"
           :class="getRoute() === 'dashboard-default' ? 'active' : ''"
@@ -32,7 +55,7 @@ const getRoute = () => {
         </sidenav-item>
       </li>
 
-      <li class="nav-item">
+      <li class="nav-item" v-if="type === 2">
         <sidenav-item
           to="/dashboard-default"
           :class="getRoute() === 'dashboard-default' ? 'active' : ''"
@@ -58,7 +81,7 @@ const getRoute = () => {
         </sidenav-item>
       </li>
 
-      <li class="nav-item">
+      <li class="nav-item"  v-if="type === 1">
         <sidenav-item
           to="/tables"
           :class="getRoute() === 'tables' ? 'active' : ''"
@@ -72,7 +95,7 @@ const getRoute = () => {
         </sidenav-item>
       </li>
 
-      <li class="nav-item">
+      <li class="nav-item" v-if="type === 1">
         <sidenav-item
           to="/billing"
           :class="getRoute() === 'billing' ? 'active' : ''"
@@ -84,7 +107,7 @@ const getRoute = () => {
         </sidenav-item>
       </li>
 
-      <li class="nav-item">
+      <li class="nav-item" v-if="type === 1">
         <sidenav-item
           to="/virtual-reality"
           :class="getRoute() === 'virtual-reality' ? 'active' : ''"

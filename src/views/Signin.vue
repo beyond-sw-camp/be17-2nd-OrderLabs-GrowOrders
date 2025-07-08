@@ -20,17 +20,14 @@ const userStore = useUserStore();
 const email = ref("");
 const password = ref("");
 const rememberMe = ref(false);
-let loginType = ref("");
+let loginType = ref(1);
 
 const signinForm = reactive({
     email: "",
     password: "",
-    type: ""
-})
+    loginType: ""
+});
 
-const onPickedChange = (val) => {
-  loginType.value = val;
-};
 
 
 onBeforeMount(() => {
@@ -55,12 +52,19 @@ const onSubmit = async () => {
     return;
   }
 
+  signinForm.email = email.value;
+  signinForm.password = password.value;
+  signinForm.loginType = loginType.value;
+
+
   let data;
   if (loginType.value === 1) {
     data = await farmerApi.farmerList(signinForm);
   } else {
     data = await farmerApi.buyerList(signinForm);
   }
+
+  console.log("QWDQWDQWDQWd", signinForm);
 
   if (data && data.length > 0) {
     userStore.login(data[0]);
@@ -120,7 +124,7 @@ const onSubmit = async () => {
                     </div>
 
                     <label class="form-label fw-bold text-dark">회원 유형 선택</label>
-                    <SelectPosition class="mb-3" @update="onPickedChange" v-model="loginType"></SelectPosition>
+                    <SelectPosition v-model="loginType" />
 
                     <argon-switch 
                       v-model="rememberMe"

@@ -1,12 +1,16 @@
 <script setup>
 import { ref, watch } from 'vue';
 
-const emit = defineEmits(['update']);
+const props = defineProps({
+  modelValue: { type: [String, Number], default: 1 }
+});
 
-const picked = ref(1);
+const emit = defineEmits(['update:modelValue']);
+
+const picked = ref(props.modelValue);
 
 watch(picked, (newVal) => {
-  emit('update', newVal);
+  emit('update:modelValue', newVal);
 });
 </script>
 

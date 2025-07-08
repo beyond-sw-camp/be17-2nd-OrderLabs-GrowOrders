@@ -3,6 +3,7 @@ import { useRouter } from 'vue-router';
 import { defineStore } from "pinia";
 import { ref } from "vue";
 
+
 const encryptStorage = new EncryptStorage("abcdefghijklmnopqrstuvwxyz0123456789", {
     prefix: 'swy'
 });
@@ -31,17 +32,18 @@ export const useUserStore = defineStore('user', () => {
     };
 
     // 수정된 login 함수
-    const login = () => {
+    const login = (user) => {
         const key = "user";
-        const item = {
-            email: 'test01@test.com',
-            nickname: 'test01'
-        };
+        // const item = {
+        //     email: 'test01@test.com',
+        //     nickname: 'test01',
+        //     type: 1
+        // };
 
-        encryptStorage.setItem(key, item);
+        encryptStorage.setItem(key, user);
         isLogin.value = true;
-        userInfo.value = item;
-        console.log('User logged in:', item);
+        userInfo.value = user;
+        console.log('User logged in:', user);
     };
 
     const logout = () => {
