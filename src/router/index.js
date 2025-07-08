@@ -9,7 +9,7 @@ import Signup from "../views/Signup.vue";
 import Signin from "../views/Signin.vue";
 import BuyerList from "../views/order/BuyerList.vue";
 import FarmList from "../views/order/FarmList.vue";
-import FarmerList from "../views/order/FarmList.vue";
+import FarmerList from "../views/order/FarmerList.vue";
 
 const routes = [
   {
