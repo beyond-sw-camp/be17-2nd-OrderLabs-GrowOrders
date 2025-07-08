@@ -14,6 +14,9 @@ import FarmerList from "../views/order/FarmList.vue";
 import Notification from "../views/Notification.vue";
 // 생물 등록
 import Crop_register from "../views/Crop_register.vue";
+// 농장 등록
+import Farm_register from "../views/Farm_register.vue";
+
 
 const routes = [
   {
@@ -87,11 +90,17 @@ const routes = [
     name: "Notification",
     component: Notification
   },
-   // 추가
+   // 생물 추가
    {
     path: "/crop-register",
     name: "Crop Register",
     component: Crop_register
+  },
+   // 농장 추가
+   {
+    path: "/farm-register",
+    name: "Farm Register",
+    component: Farm_register
   }
 ];
 

@@ -58,7 +58,7 @@ onMounted(() => {
       <li class="nav-item" v-if="type === 2">
         <sidenav-item
           to="/billing"
-          :class="getRoute() === 'dashboard-default' ? 'active' : ''"
+          :class="getRoute() === 'Billing' ? 'active' : ''"
           :navText="isRTL ? 'لوحة القيادة' : '주문자 메인 화면'"
         >
           <template v-slot:icon>
@@ -111,8 +111,8 @@ onMounted(() => {
 
       <li class="nav-item" v-if="type === 1">
         <sidenav-item
-          to="/billing"
-          :class="getRoute() === 'billing' ? 'active' : ''"
+          to="/farm-register"
+          :class="getRoute() === 'Farm Register' ? 'active' : ''"
           :navText="isRTL ? 'الفواتیر' : '농장등록'"
         >
           <template v-slot:icon>
@@ -125,7 +125,7 @@ onMounted(() => {
       <li class="nav-item" v-if="type === 1">
         <sidenav-item
           to="/crop-register"
-          :class="getRoute() === 'virtual-reality' ? 'active' : ''"
+          :class="getRoute() === 'Crop Register' ? 'active' : ''"
           :navText="isRTL ? 'الواقع الافتراضي' : '생물등록'"
         >
           <template v-slot:icon>

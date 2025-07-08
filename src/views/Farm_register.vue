@@ -12,7 +12,7 @@ import setNavPills from "@/assets/js/nav-pills.js";
 import setTooltip from "@/assets/js/tooltip.js";
 import ArgonInput from "@/components/ArgonInput.vue";
 import ArgonButton from "@/components/ArgonButton.vue";
-import CropCard from "./components/CropCard.vue";
+import CropCard from "@/components/CropCard.vue";
 
 // 드롭다운
 import { ref, computed} from 'vue'
