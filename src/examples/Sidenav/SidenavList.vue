@@ -57,7 +57,7 @@ onMounted(() => {
 
       <li class="nav-item" v-if="type === 2">
         <sidenav-item
-          to="/dashboard-default"
+          to="/billing"
           :class="getRoute() === 'dashboard-default' ? 'active' : ''"
           :navText="isRTL ? 'لوحة القيادة' : '주문자 메인 화면'"
         >
