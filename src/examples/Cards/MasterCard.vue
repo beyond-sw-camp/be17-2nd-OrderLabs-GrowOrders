@@ -4,6 +4,8 @@ import { useStore } from "vuex";
 import ArgonAvatar from "@/components/ArgonAvatar.vue";
 import img1 from "../../assets/img/logos/mastercard.png";
 import team from "../../assets/img/orderlabs/boy.png"
+// 알림 추가
+import alarm from "../../assets/img/orderlabs/alarm_plus.png";
 
 const store = useStore();
 const isRTL = computed(() => store.state.isRTL);
@@ -42,7 +44,18 @@ defineProps({
         <h5 class="text-white mt-4 pb-2">
           {{ card.number }}
         </h5>
-        <div class="d-flex">
+        
+
+          <!--알림버튼 추가-->
+          <a href="../../views/Notification.vue">
+          <div
+            class="w-20 d-flex align-items-end justify-content-end"
+            :class="isRTL ? 'me-auto' : 'ms-auto'">
+            <argon-avatar class="w-15 position-absolute" :style="{ top: '+30px', right: '+20px' }" :image="alarm" alt="logo" />
+          </div>
+        </a>
+        
+
           <div class="d-flex">
             <div :class="isRTL ? 'ms-4' : 'me-4'">
               <p class="text-white text-sm opacity-8 mb-0">
@@ -66,5 +79,4 @@ defineProps({
         </div>
       </div>
     </div>
-  </div>
 </template>
