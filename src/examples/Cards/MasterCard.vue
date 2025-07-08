@@ -1,6 +1,8 @@
 <script setup>
 import { computed } from "vue";
 import { useStore } from "vuex";
+// 라우터 기능 추가 
+import { useRoute } from "vue-router";
 import ArgonAvatar from "@/components/ArgonAvatar.vue";
 import img1 from "../../assets/img/logos/mastercard.png";
 import team from "../../assets/img/orderlabs/boy.png"
@@ -28,6 +30,14 @@ defineProps({
     }),
   },
 });
+
+// 라우터 기능 추가
+const getRoute = () => {
+  const route = useRoute();
+  const routeArr = route.path.split("/");
+  return routeArr[1];
+};
+
 </script>
 <template>
   <div class="card bg-transparent shadow-xl">
@@ -47,13 +57,14 @@ defineProps({
         
 
           <!--알림버튼 추가-->
-          <a href="../../views/Notification.vue">
+          <router-link to="/notification">
           <div
-            class="w-20 d-flex align-items-end justify-content-end"
-            :class="isRTL ? 'me-auto' : 'ms-auto'">
-            <argon-avatar class="w-15 position-absolute" :style="{ top: '+30px', right: '+20px' }" :image="alarm" alt="logo" />
+            class="w-20 d-flex align-items-end justify-content-end">
+            <argon-avatar 
+            :class="getRoute() === 'notification' ? 'active' : ''"
+            class="w-15 position-absolute" :style="{ top: '+30px', right: '+20px' }" :image="alarm" alt="logo" />
           </div>
-        </a>
+        </router-link>
         
 
           <div class="d-flex">

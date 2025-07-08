@@ -10,6 +10,8 @@ import Signin from "../views/Signin.vue";
 import BuyerList from "../views/order/BuyerList.vue";
 import FarmList from "../views/order/FarmList.vue";
 import FarmerList from "../views/order/FarmList.vue";
+//알림 추가
+import Notification from "../views/Notification.vue";
 
 const routes = [
   {
@@ -76,6 +78,12 @@ const routes = [
     path: "/farmerlist",
     name: "FarmerList",
     component: FarmerList
+  },
+  // 알림 추가
+  {
+    path: "/notification",
+    name: "Notification",
+    component: Notification
   }
 ];
 

@@ -49,7 +49,7 @@ const filteredNotifications = computed(() => {
 //     : notifications.value.filter(n => n.type === activeType.value)
 // )
 
-// ✅ 여기에 날짜 포맷 함수 추가
+//  여기에 날짜 포맷 함수 추가
 // const formatDate = (str) => {
 //   if (!str) return ''
 //   return new Date(str).toLocaleString('ko-KR')
