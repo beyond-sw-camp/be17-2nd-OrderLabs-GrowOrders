@@ -20,6 +20,8 @@ import Crop_register from "../views/Crop_register.vue";
 import Farm_register from "../views/Farm_register.vue";
 // 판매량 조회
 import Sales from "@/views/Sales.vue";
+// 재고 관리
+import Inventory from "@/views/Inventory.vue";
 
 const routes = [
   {
