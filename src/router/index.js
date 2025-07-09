@@ -11,6 +11,13 @@ import BuyerList from "../views/order/BuyerList.vue";
 import FarmList from "../views/order/FarmList.vue";
 import FarmerList from "../views/order/FarmerList.vue";
 
+// 알림 추가
+import Notification from "../views/Notification.vue";
+// 생물 등록
+import Crop_register from "../views/Crop_register.vue";
+// 농장 등록
+import Farm_register from "../views/Farm_register.vue";
+
 const routes = [
   {
     path: "/",
@@ -76,6 +83,24 @@ const routes = [
     path: "/farmerlist",
     name: "FarmerList",
     component: FarmerList
+  },
+  // 알림 추가
+  {
+    path: "/notification",
+    name: "Notification",
+    component: Notification
+  },
+  // 생물 추가
+  {
+    path: "/crop-register",
+    name: "Crop Register",
+    component: Crop_register
+  },
+  // 농장 추가
+  {
+    path: "/farm-register",
+    name: "Farm Register",
+    component: Farm_register
   }
 ];
 

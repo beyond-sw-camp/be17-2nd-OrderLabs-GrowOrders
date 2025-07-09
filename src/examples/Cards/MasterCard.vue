@@ -1,9 +1,13 @@
 <script setup>
 import { computed } from "vue";
 import { useStore } from "vuex";
+// 라우터 기능 추가 
+import { useRoute } from "vue-router";
 import ArgonAvatar from "@/components/ArgonAvatar.vue";
 import img1 from "../../assets/img/logos/mastercard.png";
 import team from "../../assets/img/orderlabs/boy.png"
+// 알림 추가
+import alarm from "../../assets/img/orderlabs/alarm_plus.png";
 
 const store = useStore();
 const isRTL = computed(() => store.state.isRTL);
@@ -26,6 +30,14 @@ defineProps({
     }),
   },
 });
+
+// 라우터 기능 추가
+const getRoute = () => {
+  const route = useRoute();
+  const routeArr = route.path.split("/");
+  return routeArr[1];
+};
+
 </script>
 <template>
   <div class="card bg-transparent shadow-xl">
@@ -42,7 +54,19 @@ defineProps({
         <h5 class="text-white mt-4 pb-2">
           {{ card.number }}
         </h5>
-        <div class="d-flex">
+        
+
+          <!--알림버튼 추가-->
+          <router-link to="/notification">
+          <div
+            class="w-20 d-flex align-items-end justify-content-end">
+            <argon-avatar 
+            :class="getRoute() === 'notification' ? 'active' : ''"
+            class="w-15 position-absolute" :style="{ top: '+30px', right: '+20px' }" :image="alarm" alt="logo" />
+          </div>
+        </router-link>
+        
+
           <div class="d-flex">
             <div :class="isRTL ? 'ms-4' : 'me-4'">
               <p class="text-white text-sm opacity-8 mb-0">
@@ -66,5 +90,4 @@ defineProps({
         </div>
       </div>
     </div>
-  </div>
 </template>
