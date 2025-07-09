@@ -1,5 +1,9 @@
 <script setup>
 const emit = defineEmits(["update:modelValue"]);
+// input 자유롭게 수정하기 위해 설정추가
+defineOptions({
+  inheritAttrs: false,
+});
 
 defineProps({
   size: {
@@ -82,10 +86,12 @@ const hasIcon = (icon) => (icon ? "input-group" : null);
         :placeholder="placeholder"
         :isRequired="isRequired"
         @input="emit('update:modelValue', $event.target.value)"
+        v-bind="$attrs"
       />
       <span v-if="iconDir === 'right'" class="input-group-text">
         <i :class="getIcon(icon)"></i>
       </span>
     </div>
   </div>
+
 </template>
