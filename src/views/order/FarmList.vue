@@ -84,10 +84,14 @@ console.log(farmData.value);
               <td><p class="text-xs font-weight-bold mb-0">{{ item.cultivationArea }}</p></td>
               <td><p class="text-xs font-weight-bold mb-0">{{ item.price }}</p></td>
               <td class="align-middle text-center text-sm">
-                <a href="/order-page" class="badge text-xs badge-sm bg-gradient-success text-white"
-                  style="text-decoration: none;">
-                  주 문
-                </a>
+                <router-link
+                  :to="{ name: 'OrderCreate', params: { FarmId: item.farmId } }"
+                  class="badge text-xs badge-sm bg-gradient-success text-white"
+                >
+                  <a href="/order-page" class="badge text-xs badge-sm bg-gradient-success text-white">
+                    주문
+                  </a>
+                </router-link>
               </td>
             </tr>
           </tbody>
@@ -96,5 +100,5 @@ console.log(farmData.value);
     </div>
   </div>
   </div>
-  <router-view />
+ <router-view></router-view>
 </template>

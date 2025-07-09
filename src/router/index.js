@@ -11,6 +11,7 @@ import BuyerList from "../views/order/BuyerList.vue";
 import FarmList from "../views/order/FarmList.vue";
 import FarmerList from "../views/order/FarmerList.vue";
 import OrderDetail from "../views/order/OderDetail.vue";
+import OrderCreate from "../views/order/OrderCreate.vue";
 
 // 알림 추가
 import Notification from "../views/Notification.vue";
@@ -78,6 +79,12 @@ const routes = [
     path: "/orders/:orderId",
     name: "OrderDetail",
     component: OrderDetail,
+    props: true,
+  },
+  {
+    path: "/Farms/:FarmId",
+    name: "OrderCreate",
+    component: OrderCreate,
     props: true,
   },
   {
