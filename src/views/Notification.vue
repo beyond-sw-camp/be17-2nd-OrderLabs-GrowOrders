@@ -1,11 +1,11 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
-import api from '../../api/notification/noti.js';
+import api from '../api/notification/noti.js';
 import NotificationTable from '@/views/components/AuthorsTable_noti.vue'
 import MiniStatisticsCard from "@/examples/Cards/MiniStatisticsCard.vue";
 
 
-const notifications = ref([])
+//const notifications = ref([])
 const activeType = ref('전체')
 
 // 알림 종류
@@ -37,7 +37,9 @@ const notiData = ref([]);
 onMounted(async () => {
   try {
     const res = await api.notification();
-    notiData.value = res.map(item => item.data);
+    console.log('📦 API 응답:', res);
+    console.log('🔍 res.data:', res.data);
+    notiData.value = res.data;
     console.log(notiData.value);
   } catch (error) {
     console.error('API 호출 오류:', error);
@@ -50,11 +52,17 @@ onMounted(async () => {
 //   fetchNotifications()
 // })
 
+// const filteredNotifications = computed(() => {
+//   if (!notifications.value.data) return []
+//   return activeType.value === '전체'
+//     ? notifications.value.data
+//     : notifications.value.data.filter(n => n.type === activeType.value)
+// })
 const filteredNotifications = computed(() => {
-  if (!notifications.value.data) return []
+  if (!notiData.value) return []
   return activeType.value === '전체'
-    ? notifications.value.data
-    : notifications.value.data.filter(n => n.type === activeType.value)
+    ? notiData.value
+    : notiData.value.filter(n => n.type === activeType.value)
 })
 
 // 선택된 알림 유형만 필터링
