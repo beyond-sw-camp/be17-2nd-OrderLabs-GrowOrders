@@ -92,14 +92,23 @@
 <details>
 <summary>🌾 농장 등록</summary>
 농장등록 시연 움짤
+<br>
+<img src="https://github.com/user-attachments/assets/c9d14ac4-57da-498a-b242-1767bf3044a8">
+<br>
 </details>
 <details>
 <summary>🍅 상품 등록</summary>
 상품등록 시연 움짤
+<br>
+<img src="https://github.com/user-attachments/assets/2b6f472e-f5b5-45a5-9162-67b72af5a5cb">
+<br>
 </details>
 <details>
 <summary>📊 재고 관리</summary>
 재고관리 시연 움짤
+<br>
+<img src="https://github.com/user-attachments/assets/ada59d76-cdae-4358-bb9b-38461df98178">
+<br>
 </details>
 <br>
 
