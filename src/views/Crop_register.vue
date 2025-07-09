@@ -8,6 +8,46 @@ import ArgonButton from "@/components/ArgonButton.vue";
 import CropCard from "@/components/CropCard.vue";
 import axios from 'axios'; 
 
+// 드롭다운 목록
+import { ref, computed, watch } from 'vue'
+// 01. 품목 드롭다운
+const selectedCrop = ref('')
+// 02. 재배지역 드롭다운
+const selectedLocation = ref('')
+// 03. 재배방식 드롭다운
+const selectedMethod = ref('')
+// 04. 관수방식 드롭다운
+const selectedIrrigation = ref('')
+// 05. 비료 사용 여부 드롭다운
+const fertilizerUsage = ref('')
+// 06. 농약 사용 여부 드롭다운
+const pesticideUsage = ref('')
+const sowingDate = ref('')
+const cultivationArea = ref('')
+const mode = ref('register')
+
+const selectedCropInfo = computed(() => cropInfoMap[selectedCrop.value] || null)
+const body = document.getElementsByTagName("body")[0];
+const store = useStore();
+
+// 등록 완료하면 인풋값 수정 못하게 리드온리 처리
+const isReadOnly = computed(() => mode.value == 'detail')
+
+function handleSubmit() {
+  mode.value = 'detail'
+  // 등록하면 등록 완료 알러트창 띄움
+  if (mode.value !== 'register') {
+    alert("물량이 등록되었습니다.");
+    return;
+  }
+}
+
+function enterEditMode() {
+  mode.value = 'register'
+
+}
+
+
 // 프론트 제이슨 서버에 전송 
 const onSubmit = async () => {
   try {
@@ -27,26 +67,9 @@ const onSubmit = async () => {
   } catch (error) {
     console.error('등록 실패:', error);
   }
+
 };
 
-
-// 드롭다운 목록
-import { ref, computed, watch } from 'vue'
-// 01. 품목 드롭다운
-const selectedCrop = ref('')
-// 02. 재배지역 드롭다운
-const selectedLocation = ref('')
-// 03. 재배방식 드롭다운
-const selectedMethod = ref('')
-// 04. 관수방식 드롭다운
-const selectedIrrigation = ref('')
-// 05. 비료 사용 여부 드롭다운
-const fertilizerUsage = ref('')
-// 06. 농약 사용 여부 드롭다운
-const pesticideUsage = ref('')
-
-const sowingDate = ref('')
-const cultivationArea = ref('')
 
 // 품목별 재배 방식 정의
 const cropMethods = {
@@ -100,19 +123,6 @@ const cropInfoMap = {
     description: '색상이 다양하고 비타민 C가 풍부한 채소'
   }
 }
-
-
-const selectedCropInfo = computed(() => cropInfoMap[selectedCrop.value] || null)
-
-const body = document.getElementsByTagName("body")[0];
-
-const store = useStore();
-
-
-
-
-
-
 
 onMounted(() => {
   store.state.isAbsolute = true;
@@ -177,7 +187,17 @@ onBeforeUnmount(() => {
                 <!--아래쪽 마진 0, 타이틀-->
                 <p class="mb-0">물량 등록</p>
                 <!--등록버튼-->
-                <argon-button color="success" size="sm" class="ms-auto">등록</argon-button>
+                <argon-button  color="success" size="sm" class="ms-auto"  v-if="mode === 'register'" @click="handleSubmit" >등록</argon-button>
+                <!--수정 버튼-->
+                <argon-button
+                  v-if="mode === 'detail'"
+                  color="warning"
+                  size="sm"
+                  class="ms-auto"
+                  @click="enterEditMode"
+                >
+                  수정
+                </argon-button>
               </div>
             </div>
             
@@ -196,7 +216,7 @@ onBeforeUnmount(() => {
                 <!--디비 연결후에 접속한 유저 id 끌고오기-->
                 <div class="col-md-6">
                   <label for="example-text-input" class="form-control-label">사용자 아이디</label>
-                  <argon-input :model-value="'12354656'" readonly class="bg-light text-muted" />
+                  <argon-input :model-value="'12354656'" readonly class="bg-light text-muted"  />
                 </div>
               </div>
 
@@ -208,7 +228,8 @@ onBeforeUnmount(() => {
                   <select
                     class="form-control"
                     id="crop-select"
-                    v-model="selectedCrop">
+                    v-model="selectedCrop"
+                    :readonly="isReadOnly" :class="isReadOnly ? 'bg-light text-muted' : ''" >
                     <option value="">-- 품목 선택 --</option>
                     <option value="토마토">토마토</option>
                     <option value="딸기">딸기</option>
@@ -218,7 +239,7 @@ onBeforeUnmount(() => {
                 <!--4. 재배 방식-->
                 <div class="col-md-6" v-if="availableMethods.length">
                   <label class="form-control-label">재배 방식</label>
-                  <select class="form-control" v-model="selectedMethod">
+                  <select class="form-control" v-model="selectedMethod" :readonly="isReadOnly" :class="isReadOnly ? 'bg-light text-muted' : ''">
                       <option value="">-- 재배 방식 선택 --</option>
                       <option v-for="method in availableMethods" :key="method" :value="method">
                       {{ method }}
@@ -233,7 +254,7 @@ onBeforeUnmount(() => {
                 <!--5. 파종일-->
                 <div class="col-md-6">
                   <label for="example-text-input" class="form-control-label">파종일</label>
-                  <argon-input type="date" v-model="sowingDate"/>
+                  <argon-input type="date" v-model="sowingDate" :readonly="isReadOnly" :class="isReadOnly ? 'bg-light text-muted' : ''" />
                 </div>
                 <!--5. 재배 지역-->
                 <div class="col-md-6">
@@ -241,7 +262,8 @@ onBeforeUnmount(() => {
                   <select
                     class="form-control"
                     id="location-select"
-                    v-model="selectedLocation">
+                    v-model="selectedLocation"
+                    :readonly="isReadOnly" :class="isReadOnly ? 'bg-light text-muted' : ''">
                     <option value="">-- 지역 선택 --</option>
                     <option value="경기도">경기도</option>
                     <option value="강원도">강원도</option>
@@ -263,14 +285,15 @@ onBeforeUnmount(() => {
                   <label for="example-text-input" class="form-control-label">재배 면적</label>
                   <!--단위 고정시키기-->
                   <div class="input-group">
-                    <input type="number" class="form-control" id="cultivation-area" v-model="cultivationArea" placeholder="면적을 입력하세요">
+                    <input type="number" class="form-control" id="cultivation-area" v-model="cultivationArea" 
+                    :readonly="isReadOnly" :class="isReadOnly ? 'bg-light text-muted' : ''" placeholder="면적을 입력하세요">
                     <span class="input-group-text">㎡</span>
                   </div>
                   </div>
                   <!--8.관수 방식-->
                   <div class="col-md-6">
                     <label class="form-control-label">관수 방식</label>
-                    <select class="form-control" v-model="selectedIrrigation">
+                    <select class="form-control" v-model="selectedIrrigation" :readonly="isReadOnly" :class="isReadOnly ? 'bg-light text-muted' : ''">
                       <option value="">-- 관수 방식 선택 --</option>
                       <option value="점적관수">점적관수</option>
                       <option value="스프링클러">스프링클러</option>
@@ -287,7 +310,7 @@ onBeforeUnmount(() => {
                  <!--9. 비료 사용 여부 -->
                 <div class="col-md-6">
                   <label class="form-control-label">비료 사용 여부</label>
-                  <select class="form-control" v-model="fertilizerUsage">
+                  <select class="form-control" v-model="fertilizerUsage" :readonly="isReadOnly" :class="isReadOnly ? 'bg-light text-muted' : ''">
                     <option value="">-- 비료 사용 선택 --</option>
                     <option value="유기질 비료">유기질 비료</option>
                     <option value="무기질 비료">무기질 비료</option>
@@ -298,7 +321,7 @@ onBeforeUnmount(() => {
                 <!-- 10. 농약 사용 여부 -->
                 <div class="col-md-6">
                   <label class="form-control-label">농약 사용 여부</label>
-                  <select class="form-control" v-model="pesticideUsage">
+                  <select class="form-control" v-model="pesticideUsage" :readonly="isReadOnly" :class="isReadOnly ? 'bg-light text-muted' : ''">
                     <option value="">-- 농약 사용 선택 --</option>
                     <option value="사용함">사용함</option>
                     <option value="사용 안함">사용 안함</option>
@@ -314,7 +337,7 @@ onBeforeUnmount(() => {
                       <label for="profile-image" class="form-control-label">사진 등록</label>
                       <!-- 이미지 업로드 -->
                        <!--이미지는 v-model 사용불가 axios로 넘겨줘야함-->
-                      <input type="file" class="form-control" id="profile-image" accept="image/*" @change="onImageChange" />
+                      <input type="file" class="form-control" id="profile-image" accept="image/*" @change="onImageChange" :readonly="isReadOnly" :class="isReadOnly ? 'bg-light text-muted' : ''" />
                       <!-- 미리보기 -->
                       <img v-if="previewUrl" :src="previewUrl" class="profile-preview-box mt-3" alt="미리보기" />
                     </div>
