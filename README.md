@@ -65,7 +65,6 @@
 [Figma 화면 설계](https://www.figma.com/design/b62xD9jx6Nby2e4xa7ylJZ/%EC%A0%9C%EB%AA%A9-%EC%97%86%EC%9D%8C?node-id=0-1&t=51nZR2QNFvuL1JE2-1)
 <br><br>
 
-<img src="https://user-images.githubusercontent.com/17814535/88974985-14ced400-d27f-11ea-83a8-065d86dd8d26.png">
 ## ▶️ 프로젝트 시연
 ### 👤 사용자
 <details>
