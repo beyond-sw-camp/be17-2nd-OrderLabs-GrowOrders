@@ -10,6 +10,7 @@ import Signin from "../views/Signin.vue";
 import BuyerList from "../views/order/BuyerList.vue";
 import FarmList from "../views/order/FarmList.vue";
 import FarmerList from "../views/order/FarmerList.vue";
+import OrderDetail from "../views/order/OderDetail.vue";
 
 // 알림 추가
 import Notification from "../views/Notification.vue";
@@ -65,14 +66,15 @@ const routes = [
     component: Signup,
   },
   {
-    path: "/signup",
-    name: "Signup",
-    component: Signup,
-  },
-  {
     path: "/buyerlist",
     name: "BuyerList",
-    component: BuyerList
+    component: BuyerList,
+  },
+  {
+    path: '/orders/:orderId',
+    name: 'OrderDetail',
+    component: OrderDetail,
+    props: true
   },
   {
     path: "/farmlist",
