@@ -2,7 +2,7 @@
 import { computed, ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { useStore } from "vuex";
-import { useUserStore } from '@/store/users/login.js';
+import { useUserStore } from "@/store/users/login.js";
 
 import SidenavItem from "./SidenavItem.vue";
 
@@ -14,7 +14,7 @@ let type = ref(1);
 
 // 로그인 타입 확인
 const checkType = async () => {
-  if (!userStore.userInfo || typeof userStore.userInfo.type === 'undefined') {
+  if (!userStore.userInfo || typeof userStore.userInfo.type === "undefined") {
     console.warn("userInfo가 아직 로드되지 않았습니다.");
     type.value = null;
     return;
@@ -23,7 +23,6 @@ const checkType = async () => {
   type.value = userStore.userInfo.type;
   console.log("로그인 타입:", type.value);
 };
-
 
 const getRoute = () => {
   const route = useRoute();
@@ -35,7 +34,6 @@ onMounted(() => {
   userStore.checkLogin();
   checkType();
 });
-
 </script>
 <template>
   <div
@@ -88,17 +86,15 @@ onMounted(() => {
           :navText="isRTL ? 'الجداول' : '상품 검색'"
         >
           <template v-slot:icon>
-            <i
-              class="ni ni-basket text-success text-sm opacity-10"
-            ></i>
+            <i class="ni ni-basket text-success text-sm opacity-10"></i>
           </template>
         </sidenav-item>
       </li>
 
-      <li class="nav-item"  v-if="type === 1">
+      <li class="nav-item">
         <sidenav-item
-          to="/tables"
-          :class="getRoute() === 'tables' ? 'active' : ''"
+          to="/inventory"
+          :class="getRoute() === 'inventory' ? 'active' : ''"
           :navText="isRTL ? 'الجداول' : '재고관리'"
         >
           <template v-slot:icon>
@@ -147,9 +143,15 @@ onMounted(() => {
       </li>
 
       <li class="nav-item">
-        <sidenav-item to="/sales" :class="getRoute() === 'Sales' ? 'active' : ''" :navText="isRTL ? 'الجداول' : '판매량 내역'">
+        <sidenav-item
+          to="/sales"
+          :class="getRoute() === 'Sales' ? 'active' : ''"
+          :navText="isRTL ? 'الجداول' : '판매량 내역'"
+        >
           <template v-slot:icon>
-            <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
+            <i
+              class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"
+            ></i>
           </template>
         </sidenav-item>
       </li>
