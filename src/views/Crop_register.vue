@@ -1,15 +1,36 @@
 <script setup>
 import { onBeforeMount, onMounted, onBeforeUnmount } from "vue";
 import { useStore } from "vuex";
-
 import setNavPills from "@/assets/js/nav-pills.js";
 import setTooltip from "@/assets/js/tooltip.js";
 import ArgonInput from "@/components/ArgonInput.vue";
 import ArgonButton from "@/components/ArgonButton.vue";
 import CropCard from "@/components/CropCard.vue";
+import axios from 'axios'; 
+
+// 프론트 제이슨 서버에 전송 
+const onSubmit = async () => {
+  try {
+    const payload = {
+      selectedCrop: selectedCrop.value,
+      selectedMethod: selectedMethod.value,
+      sowingDate: sowingDate.value,
+      selectedLocation: selectedLocation.value,
+      cultivationArea: cultivationArea.value,
+      selectedIrrigation: selectedIrrigation.value,
+      fertilizerUsage: fertilizerUsage.value,
+      pesticideUsage: pesticideUsage.value
+    };
+
+    const response = await axios.post('http://localhost:3001/crops', payload);
+    console.log('서버 응답:', response.data);
+  } catch (error) {
+    console.error('등록 실패:', error);
+  }
+};
 
 
-// 드롭다운
+// 드롭다운 목록
 import { ref, computed, watch } from 'vue'
 // 01. 품목 드롭다운
 const selectedCrop = ref('')
@@ -23,6 +44,9 @@ const selectedIrrigation = ref('')
 const fertilizerUsage = ref('')
 // 06. 농약 사용 여부 드롭다운
 const pesticideUsage = ref('')
+
+const sowingDate = ref('')
+const cultivationArea = ref('')
 
 // 품목별 재배 방식 정의
 const cropMethods = {
@@ -115,6 +139,7 @@ onBeforeUnmount(() => {
 
 
 <template>
+  <form @submit.prevent="onSubmit">
   <main>
     <!-- 페이지 전체 너비를 가득 채우는 컨테이너 -->
     <div class="container-fluid">
@@ -156,7 +181,7 @@ onBeforeUnmount(() => {
               </div>
             </div>
             
-
+            
             <!--왼쪽  카드 바디-->
             <div class="card-body">
               <!--1층 : 입력폼 묶어서 수평으로 정렬 -->
@@ -208,7 +233,7 @@ onBeforeUnmount(() => {
                 <!--5. 파종일-->
                 <div class="col-md-6">
                   <label for="example-text-input" class="form-control-label">파종일</label>
-                  <argon-input type="date" />
+                  <argon-input type="date" v-model="sowingDate"/>
                 </div>
                 <!--5. 재배 지역-->
                 <div class="col-md-6">
@@ -238,7 +263,7 @@ onBeforeUnmount(() => {
                   <label for="example-text-input" class="form-control-label">재배 면적</label>
                   <!--단위 고정시키기-->
                   <div class="input-group">
-                    <input type="number" class="form-control" id="cultivation-area" placeholder="면적을 입력하세요">
+                    <input type="number" class="form-control" id="cultivation-area" v-model="cultivationArea" placeholder="면적을 입력하세요">
                     <span class="input-group-text">㎡</span>
                   </div>
                   </div>
@@ -288,6 +313,7 @@ onBeforeUnmount(() => {
                     <div class="form-group">
                       <label for="profile-image" class="form-control-label">사진 등록</label>
                       <!-- 이미지 업로드 -->
+                       <!--이미지는 v-model 사용불가 axios로 넘겨줘야함-->
                       <input type="file" class="form-control" id="profile-image" accept="image/*" @change="onImageChange" />
                       <!-- 미리보기 -->
                       <img v-if="previewUrl" :src="previewUrl" class="profile-preview-box mt-3" alt="미리보기" />
@@ -304,8 +330,18 @@ onBeforeUnmount(() => {
       </div>
     </div>
   </main>
+</form>
 </template>
 
+<style scoped>
+.profile-preview-box {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+</style>
 
 
 

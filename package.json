@@ -27,6 +27,7 @@
     "core-js": "3.36.0",
     "dropzone": "6.0.0-beta.2",
     "encrypt-storage": "^2.14.6",
+    "json-server": "^1.0.0-beta.3",
     "pinia": "^3.0.3",
     "quill": "1.3.7",
     "vue": "3.4.19",

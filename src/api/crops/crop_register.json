@@ -1,0 +1,15 @@
+{
+  "crops": [
+    {
+      "id": "c0a6",
+      "selectedCrop": "토마토",
+      "selectedMethod": "수경재배",
+      "sowingDate": "2025-07-04",
+      "selectedLocation": "충청북도",
+      "cultivationArea": 121,
+      "selectedIrrigation": "스프링클러",
+      "fertilizerUsage": "무기질 비료",
+      "pesticideUsage": "사용 안함"
+    }
+  ]
+}

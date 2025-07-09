@@ -6,7 +6,7 @@
 // 2. 해당 페이지를 역할(주문자/농부) 에 따라 다르게 보이게함
 // 2.1 농부는 상세페이지에 접근했을때 본인이 등록한 농장이라면 수정 버튼이 뜸
 // 2.2 주문자가 상세페이지에 접근했을때는 수정버튼이 안뜸
-import { onBeforeMount, onMounted, onBeforeUnmount } from "vue";
+import { ref, computed, onBeforeMount, onMounted, onBeforeUnmount } from "vue";
 import { useStore } from "vuex";
 import setNavPills from "@/assets/js/nav-pills.js";
 import setTooltip from "@/assets/js/tooltip.js";
@@ -14,14 +14,16 @@ import ArgonInput from "@/components/ArgonInput.vue";
 import ArgonButton from "@/components/ArgonButton.vue";
 import CropCard from "@/components/CropCard.vue";
 
-// 드롭다운
-import { ref, computed} from 'vue'
-// 재배지역 드롭다운
+
+// 재배지역 드롭다운을 위한 반응형 변수를 선언
 const selectedLocation = ref('')
 
-// 이미지 파일과 미리보기 URL을 상태로 관리
+
+// 이미지 추가
+// .1 이미지 파일과 미리보기 URL을 상태로 관리
 const previewUrl = ref(null)
-// 파일 선택 시 호출되는 함수
+
+// .2 파일 선택 시 호출되는 함수
 function onImageChange(event) {
   const file = event.target.files[0]
   if (file) {
@@ -48,6 +50,14 @@ const description = ref('')
 
 // 현재 로그인한 사용자의 역할: 'FARMER' | 'BUYER' 등
 const userRole = ref('FARMER') // 또는 'BUYER'
+// let userRole = ref('FARMER')
+//   if (loginType.value === 1) {
+//     userRole = 'FARMER'
+//   } else {
+//     userRole = 'BUYER'
+//   }
+
+
 
 // 현재 페이지가 내 농장인지 여부 (내가 등록한 농장인지)
 const isOwner = ref(true) // 농장 주인 여부 (false면 주문자 등)
@@ -143,7 +153,8 @@ onBeforeUnmount(() => {
               <!--가로방향에 따라 유연하게 레이아웃 정렬-->
               <div class="d-flex align-items-center">
                 <!--아래쪽 마진 0, 타이틀-->
-                <p class="mb-0">농장 등록</p>
+                <p class="mb-0" v-if="mode == 'register'">농장 등록</p>
+                <p class="mb-0" v-if="mode == 'detail'">농장 상세 보기</p>
                 <!--등록버튼-->
                 <argon-button
                 v-if="mode === 'register'"
@@ -159,7 +170,7 @@ onBeforeUnmount(() => {
               <!--수정 버튼-->
               <!-- 농장 주인만 수정 버튼 표시 -->
               <argon-button
-                  v-if="mode === 'detail' && userRole === 'FARMER' && isOwner =='true'"
+                  v-if="mode == 'detail' && userRole == 'FARMER' && isOwner =='true'"
                   color="warning"
                   size="sm"
                   class="ms-auto"
