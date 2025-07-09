@@ -56,7 +56,7 @@
 ## 🔗 도메인 주소
 <br>
 
-[https://www.be17.site/dashboard-default]()
+[https://www.be17.site]()
 <br><br>
 
 ## 🖥️ 화면 설계서
