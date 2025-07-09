@@ -1,0 +1,150 @@
+{
+  "success": true,
+  "code": 200,
+  "results": {
+    "message": "farm data success",
+    "farms": [
+      {
+        "farm_id": 25,
+        "farm_name": "싱싱농장",
+        "period": {
+          "startDate": "2025-07-01",
+          "endDate": "2025-07-07"
+        },
+        "summary": {
+          "totalSalesVolume": { "value": 103430, "progressRate": 60 },
+          "totalRevenue": { "value": 53000, "progressRate": 100 },
+          "salesTrend": { "changeRate": 12, "direction": "up" }
+        },
+        "crops": [
+		  {
+			"crop_id": 1,
+			"name": "토마토",
+			"salesVolume": 312,
+			"currentPrice": 2300,
+			"unitPrice": 2000,
+			"salesProgressRate": 60,
+			"revenue": 5000,
+			"revenueProgressRate": 100,
+			"unsoldAmount": 213,
+			"unsoldProgressRate": 30
+		  },
+		  {
+			"crop_id": 2,
+			"name": "딸기",
+			"salesVolume": 2154,
+			"currentPrice": 3200,
+			"unitPrice": 2900,
+			"salesProgressRate": 55,
+			"revenue": 7800,
+			"revenueProgressRate": 92,
+			"unsoldAmount": 190,
+			"unsoldProgressRate": 25
+		  },
+		  {
+			"crop_id": 3,
+			"name": "파프리카",
+			"salesVolume": 1555,
+			"currentPrice": 2700,
+			"unitPrice": 2500,
+			"salesProgressRate": 50,
+			"revenue": 6100,
+			"revenueProgressRate": 85,
+			"unsoldAmount": 240,
+			"unsoldProgressRate": 28
+		  }
+		]
+
+      },
+      {
+        "farm_id": 26,
+        "farm_name": "푸른농장",
+        "period": {
+          "startDate": "2025-07-01",
+          "endDate": "2025-07-07"
+        },
+        "summary": {
+          "totalSalesVolume": { "value": 85400, "progressRate": 52 },
+          "totalRevenue": { "value": 47000, "progressRate": 88 },
+          "salesTrend": { "changeRate": 5, "direction": "down" }
+        },
+        "crops": [
+		  {
+			"crop_id": 4,
+			"name": "토마토",
+			"salesVolume": 1980,
+			"currentPrice": 2200,
+			"unitPrice": 1900,
+			"salesProgressRate": 50,
+			"revenue": 4300,
+			"revenueProgressRate": 90,
+			"unsoldAmount": 200,
+			"unsoldProgressRate": 27
+		  },
+		  {
+			"crop_id": 5,
+			"name": "딸기",
+			"salesVolume": 1600,
+			"currentPrice": 3100,
+			"unitPrice": 2700,
+			"salesProgressRate": 48,
+			"revenue": 7200,
+			"revenueProgressRate": 86,
+			"unsoldAmount": 180,
+			"unsoldProgressRate": 29
+		  },
+		  {
+			"crop_id": 6,
+			"name": "파프리카",
+			"salesVolume": 1100,
+			"currentPrice": 2600,
+			"unitPrice": 2400,
+			"salesProgressRate": 45,
+			"revenue": 5800,
+			"revenueProgressRate": 80,
+			"unsoldAmount": 220,
+			"unsoldProgressRate": 35
+		  }
+		]
+      },
+      {
+        "farm_id": 27,
+        "farm_name": "자연농장",
+        "period": {
+          "startDate": "2025-07-01",
+          "endDate": "2025-07-07"
+        },
+        "summary": {
+          "totalSalesVolume": { "value": 76400, "progressRate": 68 },
+          "totalRevenue": { "value": 39000, "progressRate": 73 },
+          "salesTrend": { "changeRate": 8, "direction": "up" }
+        },
+        "crops": [
+		  {
+			"crop_id": 7,
+			"name": "토마토",
+			"salesVolume": 1850,
+			"currentPrice": 2250,
+			"unitPrice": 2000,
+			"salesProgressRate": 58,
+			"revenue": 4700,
+			"revenueProgressRate": 95,
+			"unsoldAmount": 180,
+			"unsoldProgressRate": 20
+		  },
+		  {
+			"crop_id": 8,
+			"name": "딸기",
+			"salesVolume": 1420,
+			"currentPrice": 2250,
+			"unitPrice": 2000,
+			"salesProgressRate": 58,
+			"revenue": 4700,
+			"revenueProgressRate": 95,
+			"unsoldAmount": 180,
+			"unsoldProgressRate": 20
+			}
+		]
+  }
+}
+}

@@ -17,6 +17,8 @@ import Notification from "../views/Notification.vue";
 import Crop_register from "../views/Crop_register.vue";
 // 농장 등록
 import Farm_register from "../views/Farm_register.vue";
+// 판매량 조회
+import Sales from '@/views/Sales.vue'
 
 const routes = [
   {
@@ -101,7 +103,14 @@ const routes = [
     path: "/farm-register",
     name: "Farm Register",
     component: Farm_register
-  }
+  },
+  // 판매량 조회
+  {
+    path: '/sales',
+    name: 'Sales',
+    component: Sales,
+  },
+
 ];
 
 const router = createRouter({
