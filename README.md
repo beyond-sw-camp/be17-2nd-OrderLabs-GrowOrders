@@ -56,7 +56,7 @@
 ## 🔗 도메인 주소
 <br>
 
-[www.어쩌구저쩌구]()
+[https://www.be17.site/dashboard-default]()
 <br><br>
 
 ## 🖥️ 화면 설계서
@@ -69,19 +69,19 @@
 ### 👤 사용자
 <details>
 <summary>🔐 로그인</summary>
-**로그인 시연**
+<h1>로그인 시연</h1>
 <br>
-농부 로그인 시연
+<h1>농부 로그인 시연</h1>
 <br>
 <img src="https://github.com/user-attachments/assets/8463fe4d-4618-4048-ac10-96c5ea6921c5">
 <br>
-구매자 로그인 시연
+<h1>구매자 로그인 시연</h1>
 <br>
 <img src="https://github.com/user-attachments/assets/359eb445-d56e-4a13-b823-9fb1ac9d9999">
 </details>
 <details>
 <summary>💳 회원가입</summary>
-회원가입 시연
+<h1>회원가입 시연</h1>
 <br>
 <img src="https://github.com/user-attachments/assets/645233b7-4288-4ae3-b41f-897e4d76c38c">
 </details>
@@ -91,21 +91,21 @@
 ### 👨‍🌾 농부
 <details>
 <summary>🌾 농장 등록</summary>
-농장등록 시연 움짤
+<h1>농장등록 시연</h1>
 <br>
 <img src="https://github.com/user-attachments/assets/c9d14ac4-57da-498a-b242-1767bf3044a8">
 <br>
 </details>
 <details>
 <summary>🍅 상품 등록</summary>
-상품등록 시연 움짤
+<h1>상품등록 시연</h1>
 <br>
 <img src="https://github.com/user-attachments/assets/2b6f472e-f5b5-45a5-9162-67b72af5a5cb">
 <br>
 </details>
 <details>
 <summary>📊 재고 관리</summary>
-재고관리 시연 움짤
+<h1>재고관리 시연</h1>
 <br>
 <img src="https://github.com/user-attachments/assets/ada59d76-cdae-4358-bb9b-38461df98178">
 <br>
@@ -115,10 +115,16 @@
 ### 🛒 주문자
 <details>
 <summary>🧾 주문 관리</summary>
-주문관리 시연 움짤
+<h1>주문관리 시연</h1>
+<br>
+<img src="https://github.com/user-attachments/assets/1c5aab15-2815-4f1f-8ad0-7f042afa14e5">
+<br>
 </details>
 <details>
 <summary>🔍 농장 검색</summary>
-농장검색 시연 움짤
+<h1>농장 검색 시연</h1>
+<br>
+<img src="https://github.com/user-attachments/assets/86f0fb22-42fd-4440-a8cf-f82a97acb902">
+<br>
 </details>
 
