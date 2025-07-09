@@ -91,7 +91,7 @@ onMounted(() => {
         </sidenav-item>
       </li>
 
-      <li class="nav-item">
+      <li class="nav-item" v-if="type === 1">
         <sidenav-item
           to="/inventory"
           :class="getRoute() === 'inventory' ? 'active' : ''"
