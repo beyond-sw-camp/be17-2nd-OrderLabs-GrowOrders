@@ -1,23 +1,23 @@
-import axios_api from '@/plugins/axiosinterceptor'
+import axios_api from "@/plugins/axiosinterceptor";
 
 //농장 데이터 가져오기
 const getTotalSalesAPI = async (request) => {
-  let data = {}
-  let url = '/farmSaleData.json'
+  let data = {};
+  let url = "/api/farmSaleData.json";
 
   await axios_api
     .get(url, request)
     .then((response) => {
-      data = response.data
-      console.log('sales/index.js 검색 데이터')
-      console.log(data)
+      data = response.data;
+      console.log("sales/index.js 검색 데이터");
+      console.log(data);
     })
     .catch((error) => {
-      data = error.data
-      console.log('dqwdqwdqw')
-    })
+      data = error.data;
+      console.log("dqwdqwdqw");
+    });
 
-  return data
-}
+  return data;
+};
 
-export default { getTotalSalesAPI }
+export default { getTotalSalesAPI };
