@@ -48,7 +48,7 @@ const orderList = async () => {
 
 const farmList = async () => {
     let data = {};
-    let url = '/api/FarmList.json';
+    let url = '/api/farmList.json';
 
     await api.get(url)
         .then((res) => {
