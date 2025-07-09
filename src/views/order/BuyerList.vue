@@ -42,7 +42,8 @@ onMounted(async () => {
         <label class="position-absolute end-2 top-5 mt-1 me-3 text-xs">
           정렬 기준:
           <select id="sortOption" onchange="sortTable()"
-            class="form-select form-select-sm d-inline w-auto ms-1">
+            class="form-select form-select-sm d-inline w-auto ms-1"
+            style="width: 160px !important; height: 40px !important; font-size: 14px;">
             <option value="year">농장 이름</option>
             <option value="crop">작물 이름</option>
             <option value="status">주문 상태</option>
@@ -62,7 +63,7 @@ onMounted(async () => {
                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 pe-5 ps-2">금액
                 </th>
                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 pe-3 ps-2">주문 상태
-                  (㎏/10a)</th>
+                  </th>
                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 pe-3 ps-2">주문 날짜
                 </th>
                 <th class="text-secondary opacity-7 pe-4 ps-2"></th>
@@ -72,8 +73,12 @@ onMounted(async () => {
               <tr v-for="(item, index) in buyerData" :key="index">
                 <td>
                   <div class="d-flex px-2 py-1">
-                    <div>
-                      <img src="../../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1">
+                    <div class="d-flex flex-column justify-content-center">
+                      <img
+                        :src="`https://api.dicebear.com/8.x/pixel-art/svg?seed=${Math.random().toString(36).substring(2, 10)}`"
+                        class="avatar avatar-sm me-3"
+                        alt="user"
+                      />
                     </div>
                     <div class="d-flex flex-column justify-content-center">
                       <h6 class="mb-0 text-sm">{{ item.farm }}</h6>
@@ -102,13 +107,10 @@ onMounted(async () => {
                   <p class="text-xs font-weight-bold mb-0">{{ item.order_Date }}</p>
                 </td>
                 <td class="align-middle text-center text-sm">
-                  <router-link
-                    :to="{ name: 'OrderDetail', params: { orderId: item.orderId } }"
-                    class="badge text-xs badge-sm bg-gradient-success text-white"
-                    style="text-decoration: none;"
-                  >
+                  <a href="/order-page" class="badge text-xs badge-sm bg-gradient-success text-white"
+                    style="text-decoration: none;">
                     상세보기
-                  </router-link>
+                  </a>
                 </td>
               </tr>
             </tbody>
@@ -116,6 +118,5 @@ onMounted(async () => {
         </div>
       </div>
     </div>
-    <router-view></router-view>
     </div>
   </template>
