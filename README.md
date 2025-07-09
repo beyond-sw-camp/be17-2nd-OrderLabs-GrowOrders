@@ -74,6 +74,7 @@
 농부 로그인 시연
 <br>
 <img src="https://github.com/user-attachments/assets/8463fe4d-4618-4048-ac10-96c5ea6921c5">
+<br>
 구매자 로그인 시연
 <br>
 <img src="https://github.com/user-attachments/assets/359eb445-d56e-4a13-b823-9fb1ac9d9999">
