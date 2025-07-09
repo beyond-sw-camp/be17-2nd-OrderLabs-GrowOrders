@@ -19,7 +19,7 @@ import Crop_register from "../views/Crop_register.vue";
 // 농장 등록
 import Farm_register from "../views/Farm_register.vue";
 // 판매량 조회
-import Sales from '@/views/Sales.vue'
+import Sales from "@/views/Sales.vue";
 
 const routes = [
   {
@@ -73,46 +73,59 @@ const routes = [
     component: BuyerList,
   },
   {
-    path: '/orders/:orderId',
-    name: 'OrderDetail',
+    path: "/orders/:orderId",
+    name: "OrderDetail",
     component: OrderDetail,
-    props: true
+    props: true,
   },
   {
     path: "/farmlist",
     name: "FarmList",
-    component: FarmList
+    component: FarmList,
   },
   {
     path: "/farmerlist",
     name: "FarmerList",
-    component: FarmerList
+    component: FarmerList,
   },
   // 알림 추가
   {
     path: "/notification",
     name: "Notification",
-    component: Notification
+    component: Notification,
   },
   // 생물 추가
   {
     path: "/crop-register",
     name: "Crop Register",
-    component: Crop_register
+    component: Crop_register,
   },
   // 농장 추가
   {
     path: "/farm-register",
     name: "Farm Register",
-    component: Farm_register
+    component: Farm_register,
   },
   // 판매량 조회
   {
-    path: '/sales',
-    name: 'Sales',
+    path: "/sales",
+    name: "Sales",
     component: Sales,
   },
-
+  // 재고 관리
+  {
+    path: "/inventory",
+    name: "Inventory",
+    component: Inventory,
+    children: [
+      {
+        path: ":farm_index",
+        name: "InventorysTable",
+        component: () => import("@/views/components/InventorysTable.vue"),
+        props: true,
+      },
+    ],
+  },
 ];
 
 const router = createRouter({
