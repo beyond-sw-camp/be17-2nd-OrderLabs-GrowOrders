@@ -1,3 +1,22 @@
+<script setup>
+import { ref, onMounted } from 'vue';
+import api from '../../api/order';
+
+const farmData = ref([]);
+
+// API 호출 후 data 배열에서 .data만 추출
+onMounted(async () => {
+  try {
+    const res = await api.farmList();
+    farmData.value = res.map(item => item.data);
+    console.log(farmData.value);
+  } catch (error) {
+    console.error('API 호출 오류:', error);
+  }
+});
+
+console.log(farmData.value);
+</script>
 <template>
 <div class="card mb-4">
   <div class="card-header pb-0">
@@ -43,105 +62,27 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>
-                <div class="d-flex px-2 py-1">
-                  <div>
-                    <img src="../../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1">
-                  </div>
-                  <div class="d-flex flex-column justify-content-center">
-                    <h6 class="mb-0 text-sm">오늘의 파머스</h6>
-                    <p class="text-xs text-secondary mb-0">155824517896</p>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <p class="text-xs font-weight-bold mb-0">구미</p>
-              </td>
-              <td>
-                <p class="text-xs font-weight-bold mb-0">토마토</p>
-              </td>
-              <td>
-                <p class="text-xs font-weight-bold mb-0">비닐</p>
-              </td>
-              <td>
-                <p class="text-xs font-weight-bold mb-0">880kg</p>
-              </td>
-              <td>
-                <p class="text-xs font-weight-bold mb-0">5500/kg</p>
-              </td>
-              <td class="align-middle text-center text-sm">
-                <a href="/order-page" class="badge text-xs badge-sm bg-gradient-success text-white"
-                  style="text-decoration: none;">
-                  주 문
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="d-flex px-2 py-1">
-                  <div>
-                    <img src="../../assets/img/team-1.jpg" class="avatar avatar-sm me-3" alt="user2">
-                  </div>
-                  <div class="d-flex flex-column justify-content-center">
-                    <h6 class="mb-0 text-sm">농장에서 바로</h6>
-                    <p class="text-xs text-secondary mb-0">789564852478</p>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <p class="text-xs font-weight-bold mb-0">영주</p>
-              </td>
-              <td>
-                <p class="text-xs font-weight-bold mb-0">토마토</p>
-              </td>
-              <td>
-                <p class="text-xs font-weight-bold mb-0">비닐</p>
-              </td>
-              <td>
-                <p class="text-xs font-weight-bold mb-0">1180kg</p>
-              </td>
-              <td>
-                <p class="text-xs font-weight-bold mb-0">4500/kg</p>
-              </td>
-              <td class="align-middle text-center text-sm">
-                <a href="/order-page" class="badge text-xs badge-sm bg-gradient-success text-white"
-                  style="text-decoration: none;">
-                  주 문
-                </a>
-              </td>
-            </tr>
-            <tr>
+            <tr v-for="(item, index) in farmData" :key="index">
               <td>
                 <div class="d-flex px-2 py-1">
                   <div>
                     <img
-                      src="../../assets/img/team-4.jpg"
-                      class="avatar avatar-sm me-3"
-                      alt="user3"
-                    />
+                    :src="`https://api.dicebear.com/8.x/pixel-art/svg?seed=${Math.random().toString(36).substring(2, 10)}`"
+                    class="avatar avatar-sm me-3"
+                    alt="user"
+                  />
                   </div>
                   <div class="d-flex flex-column justify-content-center">
-                    <h6 class="mb-0 text-sm">봉이네 농장</h6>
-                    <p class="text-xs text-secondary mb-0">247651784255</p>
+                    <h6 class="mb-0 text-sm">{{ item.farm_name }}</h6>
+                    <p class="text-xs text-secondary mb-0">{{ item.farmId }}</p>
                   </div>
                 </div>
               </td>
-              <td>
-                <p class="text-xs font-weight-bold mb-0">오산</p>
-              </td>
-              <td>
-                <p class="text-xs font-weight-bold mb-0">토마토</p>
-              </td>
-              <td>
-                <p class="text-xs font-weight-bold mb-0">유리</p>
-              </td>
-              <td>
-                <p class="text-xs font-weight-bold mb-0">1,545kg</p>
-              </td>
-              <td>
-                <p class="text-xs font-weight-bold mb-0">6500/kg</p>
-              </td>
+              <td><p class="text-xs font-weight-bold mb-0">{{ item.region }}</p></td>
+              <td><p class="text-xs font-weight-bold mb-0">{{ item.crop }}</p></td>
+              <td><p class="text-xs font-weight-bold mb-0">{{ item.cultivationMethod }}</p></td>
+              <td><p class="text-xs font-weight-bold mb-0">{{ item.cultivationArea }}</p></td>
+              <td><p class="text-xs font-weight-bold mb-0">{{ item.price }}</p></td>
               <td class="align-middle text-center text-sm">
                 <a href="/order-page" class="badge text-xs badge-sm bg-gradient-success text-white"
                   style="text-decoration: none;">
@@ -149,121 +90,6 @@
                 </a>
               </td>
             </tr>
-            <tr>
-              <td>
-                <div class="d-flex px-2 py-1">
-                  <div>
-                    <img
-                      src="../../assets/img/team-3.jpg"
-                      class="avatar avatar-sm me-3"
-                      alt="user4"
-                    />
-                  </div>
-                  <div class="d-flex flex-column justify-content-center">
-                    <h6 class="mb-0 text-sm">농장을 담다</h6>
-                    <p class="text-xs text-secondary mb-0">964217623596</p>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <p class="text-xs font-weight-bold mb-0">증평</p>
-              </td>
-              <td>
-                <p class="text-xs font-weight-bold mb-0">딸기</p>
-              </td>
-              <td>
-                <p class="text-xs font-weight-bold mb-0">비닐</p>
-              </td>
-              <td>
-                <p class="text-xs font-weight-bold mb-0">120kg</p>
-              </td>
-              <td>
-                <p class="text-xs font-weight-bold mb-0">5200/kg</p>
-              </td>
-              <td class="align-middle text-center text-sm">
-                <a href="/order-page" class="badge text-xs badge-sm bg-gradient-success text-white"
-                  style="text-decoration: none;">
-                  주 문
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="d-flex px-2 py-1">
-                  <div>
-                    <img
-                      src="../../assets/img/team-2.jpg"
-                      class="avatar avatar-sm me-3"
-                      alt="user5"
-                    />
-                  </div>
-                  <div class="d-flex flex-column justify-content-center">
-                    <h6 class="mb-0 text-sm">하뚜리딸기농장</h6>
-                    <p class="text-xs text-secondary mb-0">145151784655</p>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <p class="text-xs font-weight-bold mb-0">경주</p>
-              </td>
-              <td>
-                <p class="text-xs font-weight-bold mb-0">딸기</p>
-              </td>
-              <td>
-                <p class="text-xs font-weight-bold mb-0">유리</p>
-              </td>
-              <td>
-                <p class="text-xs font-weight-bold mb-0">70kg</p>
-              </td>
-              <td>
-                <p class="text-xs font-weight-bold mb-0">3900/kg</p>
-              </td>
-
-              <td class="align-middle text-center text-sm">
-                <a href="/order-page" class="badge text-xs badge-sm bg-gradient-success text-white"
-                  style="text-decoration: none;">
-                  주 문
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="d-flex px-2 py-1">
-                  <div>
-                    <img
-                      src="../../assets/img/team-4.jpg"
-                      class="avatar avatar-sm me-3"
-                      alt="user6"
-                    />
-                  </div>
-                  <div class="d-flex flex-column justify-content-center">
-                      <h6 class="mb-0 text-sm">초록길딸기농장</h6>
-                      <p class="text-xs text-secondary mb-0">513549254698</p>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <p class="text-xs font-weight-bold mb-0">경주</p>
-                </td>
-                <td>
-                  <p class="text-xs font-weight-bold mb-0">딸기</p>
-                </td>
-                <td>
-                  <p class="text-xs font-weight-bold mb-0">비닐</p>
-                </td>
-                <td>
-                  <p class="text-xs font-weight-bold mb-0">130kg</p>
-                </td>
-                <td>
-                  <p class="text-xs font-weight-bold mb-0">3200/kg</p>
-                </td>
-                <td class="align-middle text-center text-sm">
-                  <a href="/order-page" class="badge text-xs badge-sm bg-gradient-success text-white"
-                    style="text-decoration: none;">
-                    주 문
-                  </a>
-                </td>
-              </tr>
           </tbody>
         </table>
       </div>
@@ -272,8 +98,3 @@
   </div>
   <router-view />
 </template>
-<style scoped>
-.bg-gradient-secondary-green {
-  background-image: linear-gradient(310deg, #228b22 0%, #32cd32 100%);
-}
-</style>
