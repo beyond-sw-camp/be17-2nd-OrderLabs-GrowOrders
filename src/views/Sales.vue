@@ -17,8 +17,6 @@ const selectData = reactive({
 const farmsList = reactive([])
 const getFarmsList = async () => {
   const data = await sales_api.getTotalSalesAPI(selectData)
-  console.log('sss')
-  console.log(data)
   if (data && data.success) {
     if (data.results) {
       farmsList.push(...data.results.farms)
@@ -48,11 +46,11 @@ const isDateRangeInPeriod = computed(() => {
 })
 
 //작물 선택 값
-const selectCropIndex = ref(null)
+const selectCrop = ref('')
 
 //작물 선택시 선택 값 변경 함수
-const clickCrop = (dataSlickIndex) => {
-  selectCropIndex.value = dataSlickIndex
+const clickCrop = (dataSlickName) => {
+  selectCrop.value = dataSlickName
 }
 
 //페이지 로드하기 전 실행
@@ -84,8 +82,8 @@ onMounted(async () => {
     <!-- 작물 별 판매량 -->
     <div class="row">
       <div class="col-12">
-        <sales-card v-if="selectedFarm && isDateRangeInPeriod" :selectedFarm="selectedFarm" :selectData="selectData" :selectCropIndex="selectCropIndex" @clickCrop="clickCrop" @isDateRangeInPeriod="isDateRangeInPeriod" />
-        <!-- <sales-crop-table v-if="selectedFarm && isDateRangeInPeriod && selectCropIndex" /> -->
+        <sales-card v-if="selectedFarm && isDateRangeInPeriod" :selectedFarm="selectedFarm" :selectCrop="selectCrop" @clickCrop="clickCrop" @isDateRangeInPeriod="isDateRangeInPeriod" />
+        <!-- <sales-crop-table v-if="selectedFarm && isDateRangeInPeriod && selectCrop" /> -->
       </div>
     </div>
 

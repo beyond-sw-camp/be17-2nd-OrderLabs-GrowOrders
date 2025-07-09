@@ -3,7 +3,7 @@ import SalesCropTable from '@/views/components/SalesCropTable.vue'
 
 import { defineProps, defineEmits, reactive } from 'vue'
 
-const props = defineProps(['selectedFarm', 'selectData', 'selectCropIndex'])
+const props = defineProps(['selectedFarm', 'selectCrop'])
 const emits = defineEmits(['clickCrop', 'isDateRangeInPeriod'])
 
 const cardSales = reactive({
@@ -12,8 +12,9 @@ const cardSales = reactive({
   piplica: '',
 })
 
-const clickCrop = (dataSlickIndex) => {
-  emits('clickCrop', dataSlickIndex)
+const clickCrop = (dataSlickName) => {
+  console.log('clickCrop SalesCard = ' + dataSlickName)
+  emits('clickCrop', dataSlickName)
 }
 
 const isDateRangeInPeriod = () => {
@@ -22,14 +23,14 @@ const isDateRangeInPeriod = () => {
 </script>
 
 <template>
-  <div class="mb-4">
+  <div class="mb-4 row">
     <div class="container">
       <ul class="slideItem overflow-h slick-initialized slick-slider">
         <div class="slick-list draggable">
           <div class="slick-track" style="opacity: 1">
             <li class="quickMenu item1 slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false">
               <!-- <a href=""> -->
-              <div class="contFrame border-radius-lg" @click.prevent="clickCrop(0)">
+              <div class="contFrame border-radius-lg" @click.prevent="clickCrop('토마토')" style="cursor: pointer">
                 <img src="@/assets/img/orderlabs/sales/icon_tomato_white.png" alt="" />
                 <h3 class="txt-tomato">토마토</h3>
                 <div>
@@ -40,35 +41,39 @@ const isDateRangeInPeriod = () => {
               <!-- </a> -->
             </li>
             <li class="quickMenu item2 slick-slide slick-active" data-slick-index="1" aria-hidden="false">
-              <a href="">
-                <div class="contFrame border-radius-lg">
-                  <img src="@/assets/img/orderlabs/sales/icon_strawberry_white.png" alt="" />
-                  <h3 class="txt-strawberry">딸기</h3>
-                  <div>
-                    <h2>{{ cardSales.strawberry }}</h2>
-                  </div>
-                  <button type="button" onclick="">바로가기</button>
+              <!-- <a href=""> -->
+              <div class="contFrame border-radius-lg" @click.prevent="clickCrop('딸기')" style="cursor: pointer">
+                <img src="@/assets/img/orderlabs/sales/icon_strawberry_white.png" alt="" />
+                <h3 class="txt-strawberry">딸기</h3>
+                <div>
+                  <h2>{{ cardSales.strawberry }}</h2>
                 </div>
-              </a>
+                <button type="button" onclick="">바로가기</button>
+              </div>
+              <!-- </a> -->
             </li>
             <li class="quickMenu item3 slick-slide slick-active" data-slick-index="2" aria-hidden="false">
-              <a href="">
-                <div class="contFrame border-radius-lg">
-                  <img src="@/assets/img/orderlabs/sales/icon_paprika_white.png" alt="" />
-                  <h3 class="txt-paprika">파프리카</h3>
-                  <div>
-                    <h2>{{ cardSales.piplica }}</h2>
-                  </div>
-
-                  <button type="button" onclick="">바로가기</button>
+              <!-- <a href=""> -->
+              <div class="contFrame border-radius-lg" @click.prevent="clickCrop('파프리카')" style="cursor: pointer">
+                <img src="@/assets/img/orderlabs/sales/icon_paprika_white.png" alt="" />
+                <h3 class="txt-paprika">파프리카</h3>
+                <div>
+                  <h2>{{ cardSales.piplica }}</h2>
                 </div>
-              </a>
+                <button type="button" onclick="">바로가기</button>
+              </div>
+              <!-- </a> -->
             </li>
           </div>
         </div>
       </ul>
     </div>
-    <sales-crop-table v-if="props.selectedFarm && isDateRangeInPeriod && props.selectCropIndex" />
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <sales-crop-table v-if="props.selectedFarm && isDateRangeInPeriod && props.selectCrop" :selectedFarm="props.selectedFarm" :selectCrop="props.selectCrop" />
+    </div>
   </div>
 </template>
 

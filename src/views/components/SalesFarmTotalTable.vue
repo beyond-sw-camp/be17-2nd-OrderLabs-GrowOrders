@@ -1,8 +1,8 @@
 <script setup>
 import { defineProps } from 'vue'
 const props = defineProps(['selectedFarm', 'selectData'])
-console.log(props.selectedFarm)
-console.log(props.selectData)
+
+console.log('typeof' + typeof props.selectedFarm.summary.totalSalesVolume.value)
 </script>
 
 <template>
@@ -43,7 +43,7 @@ console.log(props.selectData)
                 </div>
               </td>
               <td>
-                <p class="text-sm font-weight-bold mb-0">{{ props.selectedFarm.summary.totalSalesVolume.value }} kg</p>
+                <p class="text-sm font-weight-bold mb-0">{{ props.selectedFarm.summary.totalSalesVolume.value.toLocaleString() }} kg</p>
               </td>
               <td class="align-middle text-center">
                 <div class="d-flex align-items-center justify-content-center">
@@ -59,7 +59,7 @@ console.log(props.selectData)
                         :style="{
                           width: selectedFarm.summary.totalSalesVolume.progressRate + '%',
                         }"
-                      />
+                      ></div>
                     </div>
                   </div>
                   <span class="text-xs font-weight-bold">(판매량 / 전체 수확량)</span>
@@ -83,14 +83,20 @@ console.log(props.selectData)
                 </div>
               </td>
               <td>
-                <p class="text-sm font-weight-bold mb-0">{{ props.selectedFarm.summary.totalRevenue.value }} 원</p>
+                <p class="text-sm font-weight-bold mb-0">{{ props.selectedFarm.summary.totalRevenue.value.toLocaleString() }} 원</p>
               </td>
               <td class="align-middle text-center">
                 <div class="d-flex align-items-center justify-content-center">
-                  <span class="me-2 text-xs font-weight-bold">100%</span>
+                  <span class="me-2 text-xs font-weight-bold">{{ props.selectedFarm.summary.totalRevenue.progressRate }}%</span>
                   <div>
                     <div class="me-2 progress">
-                      <div class="progress-bar bg-gradient-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+                      <div
+                        class="progress-bar bg-gradient-info"
+                        role="progressbar"
+                        :style="{
+                          width: selectedFarm.summary.totalSalesVolume.progressRate + '%',
+                        }"
+                      ></div>
                     </div>
                   </div>
                   <span class="text-xs font-weight-bold"> (매출액 / 전체 기간 매출액)</span>

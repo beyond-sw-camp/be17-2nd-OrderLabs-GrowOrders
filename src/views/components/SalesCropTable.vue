@@ -1,7 +1,13 @@
+<script setup>
+import { defineProps } from 'vue'
+
+const props = defineProps(['selectedFarm', 'selectCrop'])
+const crop = props.selectedFarm?.crops?.find((f) => f.name === props.selectCrop)
+</script>
 <template>
   <div class="card mb-4">
     <div class="card-header pb-0">
-      <h6>OrderLabs Farm의 토마토 판매량 조회</h6>
+      <h6>{{ props.selectedFarm.farm_name }}의 {{ crop.name }} 판매량 조회</h6>
     </div>
     <div class="card-body px-0 pt-0 pb-2">
       <div class="table-responsive p-0">
@@ -29,17 +35,17 @@
                 </div>
               </td>
               <td>
-                <p class="text-sm font-weight-bold mb-0">3,123 kg</p>
+                <p class="text-sm font-weight-bold mb-0">{{ crop.salesVolume.toLocaleString() }} kg</p>
               </td>
               <td>
-                <p class="text-sm font-weight-bold mb-0">2,300 원 / kg</p>
+                <p class="text-sm font-weight-bold mb-0">{{ crop.currentPrice.toLocaleString() }} 원 / kg</p>
               </td>
               <td>
-                <p class="text-sm font-weight-bold mb-0">2,000 원 / kg</p>
+                <p class="text-sm font-weight-bold mb-0">{{ crop.unitPrice.toLocaleString() }} 원 / kg</p>
               </td>
               <td class="align-middle text-center">
                 <div class="d-flex align-items-center justify-content-center">
-                  <span class="me-2 text-xs font-weight-bold">60%</span>
+                  <span class="me-2 text-xs font-weight-bold">{{ crop.salesProgressRate }}%</span>
                   <div class="me-2">
                     <div class="progress">
                       <div class="progress-bar bg-gradient-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%"></div>
@@ -66,7 +72,7 @@
                 </div>
               </td>
               <td>
-                <p class="text-sm font-weight-bold mb-0">5,000 원</p>
+                <p class="text-sm font-weight-bold mb-0">{{ crop.revenue.toLocaleString() }} 원</p>
               </td>
               <td>
                 <p class="text-sm font-weight-bold mb-0"></p>
@@ -76,10 +82,19 @@
               </td>
               <td class="align-middle text-center">
                 <div class="d-flex align-items-center justify-content-center">
-                  <span class="me-2 text-xs font-weight-bold">100%</span>
+                  <span class="me-2 text-xs font-weight-bold">{{ crop.revenueProgressRate }}%</span>
                   <div class="me-2">
                     <div class="progress">
-                      <div class="progress-bar bg-gradient-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+                      <div
+                        class="progress-bar bg-gradient-info"
+                        role="progressbar"
+                        aria-valuenow="60"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                        :style="{
+                          width: crop.unsoldProgressRate + '%',
+                        }"
+                      ></div>
                     </div>
                   </div>
                   <span class="text-xs font-weight-bold"> (매출액 / 전체 기간 매출액)</span>
@@ -103,7 +118,7 @@
                 </div>
               </td>
               <td>
-                <p class="text-sm font-weight-bold mb-0">213 kg</p>
+                <p class="text-sm font-weight-bold mb-0">{{ crop.unsoldAmount }} kg</p>
               </td>
               <td>
                 <p class="text-sm font-weight-bold mb-0"></p>
@@ -113,7 +128,7 @@
               </td>
               <td class="align-middle text-center">
                 <div class="d-flex align-items-center justify-content-center">
-                  <span class="me-2 text-xs font-weight-bold">30%</span>
+                  <span class="me-2 text-xs font-weight-bold">{{ crop.unsoldProgressRate }}%</span>
                   <div class="me-2">
                     <div class="progress">
                       <div class="progress-bar bg-gradient-danger" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%"></div>
