@@ -1,11 +1,4 @@
 <script setup>
-// 1. 한 컴포넌트로 농장등록/수정페이지와 상세페이지 둘 다 사용함
-// 1.1 농부는 농장 등록/수정 페이지와 상세 페이지 모두 접근 가능
-// 1.2 주문자는 농장 상세 페이지만 접근 가능
-
-// 2. 해당 페이지를 역할(주문자/농부) 에 따라 다르게 보이게함
-// 2.1 농부는 상세페이지에 접근했을때 본인이 등록한 농장이라면 수정 버튼이 뜸
-// 2.2 주문자가 상세페이지에 접근했을때는 수정버튼이 안뜸
 import { ref, computed, onBeforeMount, onMounted, onBeforeUnmount } from "vue";
 import { useStore } from "vuex";
 import setNavPills from "@/assets/js/nav-pills.js";
@@ -14,53 +7,13 @@ import ArgonInput from "@/components/ArgonInput.vue";
 import ArgonButton from "@/components/ArgonButton.vue";
 import CropCard from "@/components/CropCard.vue";
 import { useUserStore } from '@/store/users/login.js';
-// import { useRoute } from 'vue-router'
-// import api from '@/api/order'
-
-// 등록/상세를 구분하는 mode 상태 추가
-const mode = ref('register')
+import { useRoute } from 'vue-router'
+import api from '@/api/order'
 
 
-// 등록버튼 누를때 실행되는 함수
-function handleSubmit() {
-  console.log("농장 등록 실행")
-  console.log("농장 이름:", farmName.value)
-  console.log("소재 지역:", selectedLocation.value)
-  console.log("상세 주소:", addressDetail.value)
-  console.log("면적:", area.value)
-  console.log("소개:", description.value)
-  console.log("사진 미리보기 URL:", previewUrl.value)
-
-  mode.value = 'detail'
-
-  // 등록하면 등록 완료 알러트창 띄움
-  if (mode.value !== 'register') {
-    alert("농장이 등록되었습니다.");
-    return;
-  }
-}
-
-// 수정 버튼 누를때 함수
-function enterEditMode() {
-  mode.value = 'register'
-}
-
-
-// 농부인지 주문자인지 여부
-const userStore = useUserStore(); 
-const role = userStore.userInfo.type;
-
-// 현재 페이지가 내 농장인지 여부 (내가 등록한 농장인지)
-//const isOwner = ref(true) // 농장 주인 여부 (false면 주문자 등)
-
-// mode가 'detail'이고, 농장 주인이 아니면 읽기 전용
-// const isReadOnly = computed(() => mode.value !== 'edit')
 const isReadOnly = computed(() => mode.value !== 'register')
 
 
-
-
-// 재배지역 드롭다운을 위한 반응형 변수를 선언
 const selectedLocation = ref('')
 
 
@@ -91,30 +44,6 @@ const addressDetail = ref('')
 const area = ref('')
 const description = ref('')
 
-
-// 현재 로그인한 사용자의 역할: 'FARMER' | 'BUYER' 등
-// let userRole = ref('FARMER')
-//   if (loginType.value === 1) {
-//     userRole = 'FARMER'
-//   } else {
-//     userRole = 'BUYER'
-//   }
-
-
-// // 농장 상세 데이터 입력
-// const data = ref([])
-// const data2 = ref([])
-// const item = ref(null)
-// const farm = ref(null)
-// const route = useRoute()
-// const orderId = route.params.orderId
-
-// const orderResponse = await api.orderList()
-// const farmResponse = await api.farmList()
-// data.value = orderResponse
-// data2.value = farmResponse
-// item.value = data.value.find(obj => obj.orderId == orderId)
-// farm.value = data2.value.find(obj => obj.farmId == item.value.farmId)
 
 
 onMounted(() => {

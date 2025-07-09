@@ -1,9 +1,11 @@
 <script setup>
 import { computed } from "vue";
 import { useStore } from "vuex";
+import { useRouter } from "vue-router";
 
 const store = useStore();
 const isRTL = computed(() => store.state.isRTL);
+const router = useRouter();
 
 defineProps({
   title: {
@@ -21,6 +23,12 @@ defineProps({
     description: String,
   },
 });
+// 알림 추가
+const handleIconClick = (label) => {
+  if (label === "새로운 알림") {
+    router.push("/notification");
+  }
+};
 </script>
 <template>
   <div class="card">
@@ -54,6 +62,8 @@ defineProps({
           <div class="d-flex">
             <button
               class="my-auto btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right"
+              style="cursor: pointer;"
+              @click="handleIconClick(label)" 
             >
               <i
                 :class="`ni ${isRTL ? 'ni-bold-left' : 'ni-bold-right'}`"

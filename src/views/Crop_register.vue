@@ -234,7 +234,7 @@ onBeforeUnmount(() => {
                     class="form-control"
                     id="crop-select"
                     v-model="selectedCrop"
-                    :readonly="isReadOnly" :class="isReadOnly ? 'bg-light text-muted' : ''" >
+                    :disabled="isReadOnly" :class="isReadOnly ? 'bg-light text-muted' : ''" >
                     <option value="">-- 품목 선택 --</option>
                     <option value="토마토">토마토</option>
                     <option value="딸기">딸기</option>
@@ -244,7 +244,7 @@ onBeforeUnmount(() => {
                 <!--4. 재배 방식-->
                 <div class="col-md-6" v-if="availableMethods.length">
                   <label class="form-control-label">재배 방식</label>
-                  <select class="form-control" v-model="selectedMethod" :readonly="isReadOnly" :class="isReadOnly ? 'bg-light text-muted' : ''">
+                  <select class="form-control" v-model="selectedMethod" :disabled="isReadOnly" :class="isReadOnly ? 'bg-light text-muted' : ''">
                       <option value="">-- 재배 방식 선택 --</option>
                       <option v-for="method in availableMethods" :key="method" :value="method">
                       {{ method }}
@@ -268,7 +268,7 @@ onBeforeUnmount(() => {
                     class="form-control"
                     id="location-select"
                     v-model="selectedLocation"
-                    :readonly="isReadOnly" :class="isReadOnly ? 'bg-light text-muted' : ''">
+                    :disabled="isReadOnly" :class="isReadOnly ? 'bg-light text-muted' : ''">
                     <option value="">-- 지역 선택 --</option>
                     <option value="경기도">경기도</option>
                     <option value="강원도">강원도</option>
@@ -291,14 +291,14 @@ onBeforeUnmount(() => {
                   <!--단위 고정시키기-->
                   <div class="input-group">
                     <input type="number" class="form-control" id="cultivation-area" v-model="cultivationArea" 
-                    :readonly="isReadOnly" :class="isReadOnly ? 'bg-light text-muted' : ''" placeholder="면적을 입력하세요">
+                    :disabled="isReadOnly" :class="isReadOnly ? 'bg-light text-muted' : ''" placeholder="면적을 입력하세요">
                     <span class="input-group-text">㎡</span>
                   </div>
                   </div>
                   <!--8.관수 방식-->
                   <div class="col-md-6">
                     <label class="form-control-label">관수 방식</label>
-                    <select class="form-control" v-model="selectedIrrigation" :readonly="isReadOnly" :class="isReadOnly ? 'bg-light text-muted' : ''">
+                    <select class="form-control" v-model="selectedIrrigation" :disabled="isReadOnly" :class="isReadOnly ? 'bg-light text-muted' : ''">
                       <option value="">-- 관수 방식 선택 --</option>
                       <option value="점적관수">점적관수</option>
                       <option value="스프링클러">스프링클러</option>
@@ -315,7 +315,7 @@ onBeforeUnmount(() => {
                  <!--9. 비료 사용 여부 -->
                 <div class="col-md-6">
                   <label class="form-control-label">비료 사용 여부</label>
-                  <select class="form-control" v-model="fertilizerUsage" :readonly="isReadOnly" :class="isReadOnly ? 'bg-light text-muted' : ''">
+                  <select class="form-control" v-model="fertilizerUsage" :disabled="isReadOnly" :class="isReadOnly ? 'bg-light text-muted' : ''">
                     <option value="">-- 비료 사용 선택 --</option>
                     <option value="유기질 비료">유기질 비료</option>
                     <option value="무기질 비료">무기질 비료</option>
@@ -326,7 +326,7 @@ onBeforeUnmount(() => {
                 <!-- 10. 농약 사용 여부 -->
                 <div class="col-md-6">
                   <label class="form-control-label">농약 사용 여부</label>
-                  <select class="form-control" v-model="pesticideUsage" :readonly="isReadOnly" :class="isReadOnly ? 'bg-light text-muted' : ''">
+                  <select class="form-control" v-model="pesticideUsage" :disabled="isReadOnly" :class="isReadOnly ? 'bg-light text-muted' : ''">
                     <option value="">-- 농약 사용 선택 --</option>
                     <option value="사용함">사용함</option>
                     <option value="사용 안함">사용 안함</option>
