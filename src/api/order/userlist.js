@@ -33,4 +33,19 @@ const buyerList = async (req) => {
     return data;
 }
 
-export default { farmerList, buyerList };
+const farmList = async () => {
+    let data = {};
+    let url = '/api/FarmList.json';
+
+    await api.get(url)
+        .then((res) => {
+            data = res.data;
+        })
+        .catch((error) => {
+            data = error.data;
+        });
+
+    return data;
+}
+
+export default { farmerList, buyerList, farmList };

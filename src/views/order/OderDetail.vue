@@ -2,6 +2,7 @@
 import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import api from '@/api/order'
+import api2 from '@/api/order/userlist.js'
 
 const data = ref([])
 const data2 = ref([])
@@ -16,7 +17,7 @@ const cropValue = ref('')
 onMounted(async () => {
   try {
     const orderResponse = await api.orderList()
-    const farmResponse = await api.farmList()
+    const farmResponse = await api2.farmList()
     data.value = orderResponse
     data2.value = farmResponse
     item.value = data.value.find(obj => obj.orderId == orderId)

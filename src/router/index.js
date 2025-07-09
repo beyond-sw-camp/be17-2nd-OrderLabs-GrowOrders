@@ -3,7 +3,7 @@ import Dashboard from "../views/Dashboard.vue";
 import Tables from "../views/Tables.vue";
 import Billing from "../views/Billing.vue";
 import VirtualReality from "../views/VirtualReality.vue";
-import RTL from "../views/Rtl.vue";
+// import RTL from "../views/Rtl.vue";
 import Profile from "../views/Profile.vue";
 import Signup from "../views/Signup.vue";
 import Signin from "../views/Signin.vue";
@@ -12,6 +12,7 @@ import FarmList from "../views/order/FarmList.vue";
 import FarmerList from "../views/order/FarmerList.vue";
 import OrderDetail from "../views/order/OderDetail.vue";
 import OrderCreate from "../views/order/OrderCreate.vue";
+import Error from "../views/Error.vue";
 
 // 알림 추가
 import Notification from "../views/Notification.vue";
@@ -51,9 +52,9 @@ const routes = [
     component: VirtualReality,
   },
   {
-    path: "/rtl-page",
-    name: "RTL",
-    component: RTL,
+    path: "/error",
+    name: "Error",
+    component: Error,
   },
   {
     path: "/profile",

@@ -132,7 +132,7 @@ onMounted(() => {
 
       <li class="nav-item">
         <sidenav-item
-          to="/rtl-page"
+          to="/error"
           :class="getRoute() === 'rtl-page' ? 'active' : ''"
           navText="배송관리"
         >
