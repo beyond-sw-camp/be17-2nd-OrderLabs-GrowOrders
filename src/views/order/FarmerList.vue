@@ -108,10 +108,16 @@ onMounted(async () => {
                 <p class="text-xs font-weight-bold mb-0">{{ item.order_Date }}</p>
               </td>
               <td class="align-middle text-center text-sm">
+                    <router-link
+                    :to="{ name: 'OrderDetail', params: { orderId: item.orderId } }"
+                    class="badge text-xs badge-sm bg-gradient-success text-white"
+                    style="text-decoration: none;"
+                  >
                 <a href="/order-page" class="badge text-xs badge-sm bg-gradient-success text-white"
                     style="text-decoration: none;">
                     상세보기
                 </a>
+                 </router-link>
               </td>
             </tr>
           </tbody>
