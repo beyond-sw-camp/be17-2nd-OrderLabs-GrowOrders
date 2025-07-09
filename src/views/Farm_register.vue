@@ -13,6 +13,49 @@ import setTooltip from "@/assets/js/tooltip.js";
 import ArgonInput from "@/components/ArgonInput.vue";
 import ArgonButton from "@/components/ArgonButton.vue";
 import CropCard from "@/components/CropCard.vue";
+import { useUserStore } from '@/store/users/login.js';
+
+// 등록/상세를 구분하는 mode 상태 추가
+const mode = ref('register')
+
+
+// 등록버튼 누를때 실행되는 함수
+function handleSubmit() {
+  console.log("농장 등록 실행")
+  console.log("농장 이름:", farmName.value)
+  console.log("소재 지역:", selectedLocation.value)
+  console.log("상세 주소:", addressDetail.value)
+  console.log("면적:", area.value)
+  console.log("소개:", description.value)
+  console.log("사진 미리보기 URL:", previewUrl.value)
+
+  mode.value = 'detail'
+
+  // 등록하면 등록 완료 알러트창 띄움
+  if (mode.value !== 'register') {
+    alert("농장이 등록되었습니다.");
+    return;
+  }
+}
+
+// 수정 버튼 누를때 함수
+function enterEditMode() {
+  mode.value = 'register'
+}
+
+
+// 농부인지 주문자인지 여부
+const userStore = useUserStore(); 
+const role = userStore.userInfo.type;
+
+// 현재 페이지가 내 농장인지 여부 (내가 등록한 농장인지)
+//const isOwner = ref(true) // 농장 주인 여부 (false면 주문자 등)
+
+// mode가 'detail'이고, 농장 주인이 아니면 읽기 전용
+// const isReadOnly = computed(() => mode.value !== 'edit')
+const isReadOnly = computed(() => mode.value !== 'register')
+
+
 
 
 // 재배지역 드롭다운을 위한 반응형 변수를 선언
@@ -36,8 +79,7 @@ const body = document.getElementsByTagName("body")[0];
 const store = useStore();
 
 
-// 등록/상세를 구분하는 mode 상태 추가
-const mode = ref('register')
+
 // 2. isSubmitted → isReadOnly로 명확하게 관리하기
 // const isReadOnly = computed(() => mode.value === 'detail')
 
@@ -49,7 +91,6 @@ const description = ref('')
 
 
 // 현재 로그인한 사용자의 역할: 'FARMER' | 'BUYER' 등
-const userRole = ref('FARMER') // 또는 'BUYER'
 // let userRole = ref('FARMER')
 //   if (loginType.value === 1) {
 //     userRole = 'FARMER'
@@ -59,34 +100,13 @@ const userRole = ref('FARMER') // 또는 'BUYER'
 
 
 
-// 현재 페이지가 내 농장인지 여부 (내가 등록한 농장인지)
-const isOwner = ref(true) // 농장 주인 여부 (false면 주문자 등)
-
-
-// mode가 'detail'이고, 농장 주인이 아니면 읽기 전용
-// const isReadOnly = computed(() => mode.value !== 'edit')
-const isReadOnly = computed(() => mode.value !== 'register')
-
-
-// 3. 수정 버튼 조건부 렌더링
-function enterEditMode() {
-  mode.value = 'edit'
-}
 
 
 
-function handleSubmit() {
-  console.log("농장 등록 실행")
-  console.log("농장 이름:", farmName.value)
-  console.log("소재 지역:", selectedLocation.value)
-  console.log("상세 주소:", addressDetail.value)
-  console.log("면적:", area.value)
-  console.log("소개:", description.value)
-  console.log("사진 미리보기 URL:", previewUrl.value)
 
-  // 실제 저장 로직이 있다면 여기에 추가
-  mode.value = 'detail'
-}
+
+
+
 
 
 
@@ -154,7 +174,7 @@ onBeforeUnmount(() => {
               <div class="d-flex align-items-center">
                 <!--아래쪽 마진 0, 타이틀-->
                 <p class="mb-0" v-if="mode == 'register'">농장 등록</p>
-                <p class="mb-0" v-if="mode == 'detail'">농장 상세 보기</p>
+                <p class="mb-0" v-if="mode == 'detail'">농장 상세</p>
                 <!--등록버튼-->
                 <argon-button
                 v-if="mode === 'register'"
@@ -165,12 +185,12 @@ onBeforeUnmount(() => {
               >
                 등록
               </argon-button>
-              </div>
+            
 
               <!--수정 버튼-->
               <!-- 농장 주인만 수정 버튼 표시 -->
               <argon-button
-                  v-if="mode == 'detail' && userRole == 'FARMER' && isOwner =='true'"
+                  v-if="mode == 'detail' && role == '1'"
                   color="warning"
                   size="sm"
                   class="ms-auto"
@@ -179,7 +199,7 @@ onBeforeUnmount(() => {
                   수정
                 </argon-button>
             </div>
-            
+          </div>
 
             <!--왼쪽  카드 바디-->
             <div class="card-body">

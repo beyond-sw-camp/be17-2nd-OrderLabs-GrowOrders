@@ -185,9 +185,14 @@ onBeforeUnmount(() => {
               <!--가로방향에 따라 유연하게 레이아웃 정렬-->
               <div class="d-flex align-items-center">
                 <!--아래쪽 마진 0, 타이틀-->
-                <p class="mb-0">물량 등록</p>
+                <p class="mb-0" v-if="mode == 'register'">물량 등록</p>
+                <p class="mb-0" v-if="mode == 'detail'">물량 상세</p>
                 <!--등록버튼-->
-                <argon-button  color="success" size="sm" class="ms-auto"  v-if="mode === 'register'" @click="handleSubmit" >등록</argon-button>
+                <argon-button  v-if="mode === 'register'" 
+                color="success" size="sm" class="ms-auto" 
+                 @click="handleSubmit" >등록</argon-button>
+                
+                
                 <!--수정 버튼-->
                 <argon-button
                   v-if="mode === 'detail'"
