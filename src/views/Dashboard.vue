@@ -2,14 +2,8 @@
 import { useRouter } from 'vue-router'
 
 import MiniStatisticsCard from "@/examples/Cards/MiniStatisticsCard.vue";
-// import GradientLineChart from "@/examples/Charts/GradientLineChart.vue";
 import Carousel from "./components/Carousel.vue";
 import CategoriesList from "./components/CategoriesList.vue";
-
-// import US from "@/assets/img/orderlabs/girl.png";
-// import DE from "@/assets/img/orderlabs/boy.png";
-// import GB from "@/assets/img/orderlabs/man.png";
-// import BR from "@/assets/img/orderlabs/woman.png";
 
 import ProjectCard from "./components/ProjectCard.vue";
 
@@ -118,36 +112,6 @@ function goToPage() {
   router.push('/tables')  // 이동할 경로 입력
 }
 
-// const sales = {
-//   us: {
-//     country: "United States",
-//     sales: 2500,
-//     value: "$230,900",
-//     bounce: "29.9%",
-//     flag: US,
-//   },
-//   germany: {
-//     country: "Germany",
-//     sales: "3.900",
-//     value: "$440,000",
-//     bounce: "40.22%",
-//     flag: DE,
-//   },
-//   britain: {
-//     country: "Great Britain",
-//     sales: "1.400",
-//     value: "$190,700",
-//     bounce: "23.44%",
-//     flag: GB,
-//   },
-//   brasil: {
-//     country: "Brasil",
-//     sales: "562",
-//     value: "$143,960",
-//     bounce: "32.14%",
-//     flag: BR,
-//   },
-// };
 </script>
 <template>
   <div class="py-4 container-fluid">
@@ -173,62 +137,7 @@ function goToPage() {
               :icon="data.icon"
             />
           </div>
-          <!-- <div class="col-lg-3 col-md-6 col-12">
-            <mini-statistics-card
-              title="예상 수익금"
-              value="$53,000"
-              description="<span
-                class='text-sm font-weight-bolder text-success'
-                >+55%</span> since yesterday"
-              :icon="{
-                component: 'ni ni-money-coins',
-                background: 'bg-gradient-primary',
-                shape: 'rounded-circle',
-              }"
-            />
-          </div>
-          <div class="col-lg-3 col-md-6 col-12">
-            <mini-statistics-card
-              title="예상 생산량"
-              value="2,300"
-              description="<span
-                class='text-sm font-weight-bolder text-success'
-                >+3%</span> since last week"
-              :icon="{
-                component: 'ni ni-world',
-                background: 'bg-gradient-danger',
-                shape: 'rounded-circle',
-              }"
-            />
-          </div>
-          <div class="col-lg-3 col-md-6 col-12">
-            <mini-statistics-card
-              title="요청 생산량"
-              value="+3,462"
-              description="<span
-                class='text-sm font-weight-bolder text-danger'
-                >-2%</span> since last quarter"
-              :icon="{
-                component: 'ni ni-paper-diploma',
-                background: 'bg-gradient-success',
-                shape: 'rounded-circle',
-              }"
-            />
-          </div>
-          <div class="col-lg-3 col-md-6 col-12">
-            <mini-statistics-card
-              title="판매량"
-              value="$103,430"
-              description="<span
-                class='text-sm font-weight-bolder text-success'
-                >+5%</span> than last month"
-              :icon="{
-                component: 'ni ni-cart',
-                background: 'bg-gradient-warning',
-                shape: 'rounded-circle',
-              }"
-            />
-          </div> -->
+ 
         </div>
         <div class="row">
           <div class="col-lg-7 mb-lg">
@@ -294,32 +203,7 @@ function goToPage() {
                 </table>
               </div>
             </div>
-            <!-- <div class="card z-index-2">
-              <gradient-line-chart
-                id="chart-line"
-                title="Sales Overview"
-                description="<i class='fa fa-arrow-up text-success'></i> <span class='font-weight-bold'>4% more</span> in 2021"
-                :chart="{
-                  labels: [
-                    'Apr',
-                    'May',
-                    'Jun',
-                    'Jul',
-                    'Aug',
-                    'Sep',
-                    'Oct',
-                    'Nov',
-                    'Dec',
-                  ],
-                  datasets: [
-                    {
-                      label: 'Mobile Apps',
-                      data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
-                    },
-                  ],
-                }"
-              />
-            </div> -->
+ 
           </div>
           <div class="col-lg-5">
             <categories-list
@@ -363,71 +247,7 @@ function goToPage() {
               :headings="['상태', '관리자', '지표', '상태']"
               :rows="rows"
             />
-            <!-- <project-card
-          title="농장 모니터링"
-          description='<i class="fa fa-check text-info" aria-hidden="true"></i>
-            <span class="font-weight-bold ms-1">농장 지표</span>
-            2025-07-02'
-          :headings="['상태', '관리자', '지표', '상태']"
-          :rows="[
-            {
-              logo: logoXD,
-              tool: '일사량  (J/㎠/day)',
-              teamMembers: [team1, team2, team3, team4],
-              price: `1,540`,
-              progress: 60,
-            },
-            {
-              logo: logoAtlassian,
-              tool: '외기 기온 (℃)',
-              teamMembers: [team1, team2],
-              price: `22.8`,
-              progress: 10,
-            },
-            {
-              logo: logoSlack,
-              tool: '일일 평균 온도 (℃)',
-              teamMembers: [team2, team4],
-              price: '25.2',
-              progress: 100,
-            },
-            {
-              logo: logoSpotify,
-              tool: '예상 생산량',
-              teamMembers: [team1, team2, team3, team4],
-              price: '0.6',
-              progress: 60,
-            },
-            {
-              logo: logoJira,
-              tool: '주간 푱균 습도 (%)',
-              teamMembers: [team1],
-              price: '77.4',
-              progress: 25,
-            },
-            {
-              logo: logoInvision,
-              tool: '잔존 Co2 (ppm)',
-              teamMembers: [team1, team4],
-              price: '1.10',
-              progress: 40,
-            },
-          ]"
-          :action="[
-            {
-              route: 'javascript:;',
-              label: 'عمل',
-            },
-            {
-              route: 'javascript:;',
-              label: 'عمل اخر',
-            },
-            {
-              route: 'javascript:;',
-              label: 'شی اخر هنا',
-            },
-          ]"
-        /> -->
+
           </div>
           <div class="col-lg-5">
             <carousel :chartsData="state.chartData" />

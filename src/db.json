@@ -1,0 +1,10 @@
+{
+  "users": [
+    { "id": 1, "name": "홍길동", "email": "hong@example.com" },
+    { "id": 2, "name": "김철수", "email": "kim@example.com" }
+  ],
+  "products": [
+    { "id": 1, "name": "토마토", "price": 1000 },
+    { "id": 2, "name": "상추", "price": 800 }
+  ]
+}
