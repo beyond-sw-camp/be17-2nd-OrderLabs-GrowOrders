@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
-import axios from 'axios'
+import api from '../../api/notification/noti.js';
 import NotificationTable from '@/views/components/AuthorsTable_noti.vue'
 import MiniStatisticsCard from "@/examples/Cards/MiniStatisticsCard.vue";
 
@@ -21,19 +21,34 @@ const selectType = (type) => {
   activeType.value = type
 }
 
-// 서버에서 알림 불러오기
-const fetchNotifications = async () => {
-  try {
-    const res = await axios.get('http://192.168.133.160/notification.json')
-    notifications.value = res.data
-  } catch (err) {
-    console.error('알림 불러오기 실패:', err)
-  }
-}
+// // 서버에서 알림 불러오기
+// const fetchNotifications = async () => {
+//   try {
+//     const res = await axios.get('http://192.168.133.160/notification.json')
+//     notifications.value = res.data
+//   } catch (err) {
+//     console.error('알림 불러오기 실패:', err)
+//   }
+// }
 
-onMounted(() => {
-  fetchNotifications()
-})
+const notiData = ref([]);
+
+// API 호출 후 data 배열에서 .data만 추출
+onMounted(async () => {
+  try {
+    const res = await api.notification();
+    notiData.value = res.map(item => item.data);
+    console.log(notiData.value);
+  } catch (error) {
+    console.error('API 호출 오류:', error);
+  }
+});
+
+
+
+// onMounted(() => {
+//   fetchNotifications()
+// })
 
 const filteredNotifications = computed(() => {
   if (!notifications.value.data) return []
