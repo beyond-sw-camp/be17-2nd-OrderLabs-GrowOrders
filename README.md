@@ -31,7 +31,14 @@
 
 <br><br>
 
-Pinia에 저장된 로그인 정보를 이용하여 Navigation Guards를 통해 첫 화면으로 이동합니다. <br> 저장된 정보가 없다면 로그인 화면으로 이동합니다. 로그인은 이메일 형식과 회원 유형을 기입하기만 하면 다음 화면으로 진행됩니다.
+Pinia에 저장된 로그인 정보를 이용하여 Navigation Guards를 통해 첫 화면으로 이동합니다. <br> 저장된 정보가 없다면 로그인 화면으로 이동합니다. 로그인은 이메일 형식과 회원 유형을 기입하기만 하면 다음 화면으로 진행됩니다.<br>
+또한 EncryptStorage를 사용해 로그인한 사용자를 암호화 하여 보안에 신경썼습니다.<br> 
+
+<br><br>
+
+#### - Pinia와 EncryptStorage 사용
+
+<img width="1912" height="883" alt="Image" src="https://github.com/user-attachments/assets/a19dd806-cf15-4e60-b0fd-e9c538e63584" />
 
 <br><br>
 
