@@ -53,6 +53,28 @@
 
 <br><br>
 
+## 🧶 주요 기술 설명 및 화면
+
+<img width="1887" height="883" alt="Image" src="https://github.com/user-attachments/assets/b9cdac43-c625-438c-aac1-94a981de9a39" />
+
+Pinia에 저장된 로그인 정보를 이용하여 Navigation Guards를 통해 첫 화면으로 이동합니다. 저장된 정보가 없다면 로그인 화면으로 이동합니다.
+
+<br><br>
+
+#### - 농부로 로그인 했을 때
+
+<img width="1887" height="907" alt="Image" src="https://github.com/user-attachments/assets/125bd5d4-a311-46f9-8808-654f7fb7b256" />
+
+
+<br><br>
+
+#### - 구매자로 로그인 했을 때
+
+<img width="2240" height="1260" alt="Image" src="https://github.com/user-attachments/assets/5d36d09e-1e2c-4370-b5e6-fd811291ab56" />
+
+
+<br><br>
+
 ## 🔗 도메인 주소
 <br>
 
@@ -66,65 +88,65 @@
 <br><br>
 
 ## ▶️ 프로젝트 시연
-### 👤 사용자
-<details>
-<summary>🔐 로그인</summary>
-<h1>로그인 시연</h1>
-<br>
-<h1>농부 로그인 시연</h1>
-<br>
+
+### 🔐 로그인
+
+#### - 로그인 시연
 <img src="https://github.com/user-attachments/assets/8463fe4d-4618-4048-ac10-96c5ea6921c5">
 <br>
-<h1>구매자 로그인 시연</h1>
-<br>
+
+#### - 구매자 로그인 시연
+
 <img src="https://github.com/user-attachments/assets/359eb445-d56e-4a13-b823-9fb1ac9d9999">
-</details>
-<details>
-<summary>💳 회원가입</summary>
-<h1>회원가입 시연</h1>
+<br><br>
+
+### 💳 회원가입
+
+
+
+#### - 회원가입 시연
 <br>
 <img src="https://github.com/user-attachments/assets/645233b7-4288-4ae3-b41f-897e4d76c38c">
-</details>
-<br>
+<br><br>
 
 
 ### 👨‍🌾 농부
-<details>
-<summary>🌾 농장 등록</summary>
-<h1>농장등록 시연</h1>
+
 <br>
+
+### 🌾 농장 등록
+
+
+##### - 농장등록 시연
+
 <img src="https://github.com/user-attachments/assets/c9d14ac4-57da-498a-b242-1767bf3044a8">
-<br>
-</details>
-<details>
-<summary>🍅 상품 등록</summary>
-<h1>상품등록 시연</h1>
+<br><br>
+
+### 🍅 상품 등록
+
+
+##### - 상품등록 시연
 <br>
 <img src="https://github.com/user-attachments/assets/2b6f472e-f5b5-45a5-9162-67b72af5a5cb">
-<br>
-</details>
-<details>
-<summary>📊 재고 관리</summary>
-<h1>재고관리 시연</h1>
+<br><br>
+
+#### 📊 재고 관리
+
+#### - 재고관리 시연
 <br>
 <img src="https://github.com/user-attachments/assets/ada59d76-cdae-4358-bb9b-38461df98178">
 <br>
-</details>
 <br>
 
 ### 🛒 주문자
-<details>
-<summary>🧾 주문 관리</summary>
-<h1>주문관리 시연</h1>
+
+#### - 주문관리 시연
 <br>
 <img src="https://github.com/user-attachments/assets/1c5aab15-2815-4f1f-8ad0-7f042afa14e5">
 <br>
-</details>
-<details>
-<summary>🔍 농장 검색</summary>
-<h1>농장 검색 시연</h1>
+
+### 🔍 농장 검색
+#### - 농장 검색 시연
 <br>
 <img src="https://github.com/user-attachments/assets/86f0fb22-42fd-4440-a8cf-f82a97acb902">
 <br>
-</details>
-
