@@ -10,7 +10,7 @@ const encryptStorage = new EncryptStorage("abcdefghijklmnopqrstuvwxyz0123456789"
 
 export const useUserStore = defineStore('user', () => {
     const isLogin = ref(false);
-    const userInfo = ref(null);
+    const userInfo = ref({});
     const router = useRouter();
 
     // 수정된 checkLogin 함수
@@ -50,7 +50,7 @@ export const useUserStore = defineStore('user', () => {
         encryptStorage.removeItem("user");
         isLogin.value = false;
         userInfo.value = null;
-        router.push('/');
+        router.push('/signin');
         console.log('User logged out');
     };
 

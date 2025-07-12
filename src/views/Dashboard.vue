@@ -1,5 +1,5 @@
 <script setup>
-import { useRouter } from 'vue-router'
+// import { useRouter } from 'vue-router'
 
 import MiniStatisticsCard from "@/examples/Cards/MiniStatisticsCard.vue";
 // import GradientLineChart from "@/examples/Charts/GradientLineChart.vue";
@@ -57,13 +57,14 @@ const cardDescription = computed(() => {
 });
 
 import api from '@/api/dashboard'
-import { onMounted, ref, computed, reactive } from 'vue';
+import { onMounted, computed, reactive } from 'vue';
 
 const state = reactive({
   summaryData: [],
   farmMonitoringData: [],
   chartData: [],
-  farmStatus: {}
+  farmStatus: {},
+  orderList: []
 });
 
 const getData = async () => {
@@ -78,16 +79,8 @@ const getData = async () => {
   state.farmStatus = getStatus;
 };
 
-const orderList = ref([]);
-
 const getOrderList = async () => {
-  const data = await api.orderList();
-
-  if (data && data.orders) {
-    orderList.value = data.orders;
-  } else {
-    orderList.value = [];
-  }
+  state.orderList = await api.orderList();
 }
 
 // 이미지 동적 로드를 위한 함수
@@ -100,23 +93,26 @@ const getImageUrl = (imgName) => {
   }
 };
 
-const top4Orders = computed(() => orderList.value.slice(0, 4));
+const top4Orders = computed(() => [...state.orderList.slice(-4)].reverse());
+
+
+console.log("vrwefwfwe", top4Orders);
 
 onMounted(async () => {
   await getOrderList();
   await getData();
-  console.log(orderList.value);
+  console.log(state.orderList.value);
   console.log(state.summaryData);
   console.log(state.farmMonitoringData);
   console.log(state.chartData);
   console.log(state.farmStatus)
 });
 
-const router = useRouter()
+// const router = useRouter()
 
-function goToPage() {
-  router.push('/tables')  // 이동할 경로 입력
-}
+// function goToPage() {
+//   router.push('/tables')  // 이동할 경로 입력
+// }
 
 // const sales = {
 //   us: {
@@ -246,17 +242,14 @@ function goToPage() {
                       <td class="w-30">
                         <div class="px-2 py-1 d-flex align-items-center">
                           <div>
-                            <!-- require를 사용한 동적 이미지 로드 -->
-                            <img 
-                              :src="getImageUrl(order.img)" 
+                            <img
+                              :src="getImageUrl(order.img)"
                               alt="Profile Img"
                               style="width: 40px; height: 40px; object-fit: cover;"
                             />
                           </div>
                           <div class="ms-4">
-                            <p class="mb-0 text-xs font-weight-bold">
-                              구매자:
-                            </p>
+                            <p class="mb-0 text-xs font-weight-bold">구매자:</p>
                             <h6 class="mb-0 text-sm">{{ order.name }}</h6>
                           </div>
                         </div>
@@ -264,33 +257,37 @@ function goToPage() {
                       <td>
                         <div class="text-center">
                           <p class="mb-0 text-xs font-weight-bold">판매품목:</p>
-                          <h6 class="mb-0 text-sm">{{ order.item }}</h6>
+                          <h6 class="mb-0 text-sm">{{ order.crop }}</h6>
                         </div>
                       </td>
                       <td>
                         <div class="text-center">
-                          <p class="mb-0 text-xs font-weight-bold">주문금액:</p>
-                          <h6 class="mb-0 text-sm">{{ order.itemsSold }}</h6>
+                          <p class="mb-0 text-xs font-weight-bold">총 주문금액:</p>
+                          <h6 class="mb-0 text-sm">{{ order.total }}</h6>
                         </div>
                       </td>
                       <td class="text-sm align-middle">
                         <div class="text-center col">
                           <p class="mb-0 text-xs font-weight-bold">주문량:</p>
-                          <h6 class="mb-0 text-sm">{{ order.orderAmount }}</h6>
+                          <h6 class="mb-0 text-sm">{{ order.quantity }}</h6>
                         </div>
                       </td>
-                      <div class="d-flex">
-                        <button
-                          class="my-auto btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-righ t" @click="goToPage"
+                      <!-- 버튼용 td 추가 -->
+                      <td class="text-end">
+                        <router-link
+                          :to="{ name: 'OrderDetail', params: { orderId: order.orderId } }"
+                          class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"
+                          style="text-decoration: none;"
                         >
                           <i
                             :class="`ni ${isRTL ? 'ni-bold-left' : 'ni-bold-right'}`"
                             aria-hidden="true"
                           ></i>
-                        </button>
-                      </div>
+                        </router-link>
+                      </td>
                     </tr>
                   </tbody>
+
                 </table>
               </div>
             </div>

@@ -28,8 +28,6 @@ const signinForm = reactive({
     loginType: ""
 });
 
-
-
 onBeforeMount(() => {
   store.state.hideConfigButton = true;
   store.state.showNavbar = false;
@@ -73,7 +71,11 @@ const onSubmit = async () => {
     alert("로그인에 실패했습니다.");
   }
 
-  router.push("/");
+  if (loginType.value === 1) {
+    router.push("/farmer/dashboard");
+  } else {
+    router.push("/buyer/dashboard");
+  }
 };
 </script>
 

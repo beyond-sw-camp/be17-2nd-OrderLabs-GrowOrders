@@ -97,7 +97,7 @@ const userTypeName = computed(() => {
         <ul class="navbar-nav justify-content-end">
           <li class="nav-item d-flex align-items-center">
             <router-link
-              :to="{ name: 'Signin' }"
+              :to="userStore.userInfo?.type === 1 ? { name: 'FarmerDashboard' } : { name: 'BuyerDashboard' }"
               class="px-0 nav-link font-weight-bold text-white"
               target="_blank"
             >

@@ -1,6 +1,7 @@
 <script setup>
 import { computed } from "vue";
 import { useStore } from "vuex";
+import { useUserStore } from '@/store/users/login.js';
 import SidenavList from "./SidenavList.vue";
 import logo from "@/assets/img/logo-ct-dark.png";
 import logoWhite from "@/assets/img/logo-ct.png";
@@ -10,6 +11,8 @@ const isRTL = computed(() => store.state.isRTL);
 const layout = computed(() => store.state.layout);
 const sidebarType = computed(() => store.state.sidebarType);
 const darkMode = computed(() => store.state.darkMode);
+const userStore = useUserStore();
+
 </script>
 <template>
   <div
@@ -33,7 +36,10 @@ const darkMode = computed(() => store.state.darkMode);
         id="iconSidenav"
       ></i>
 
-      <router-link class="m-0 navbar-brand" to="/">
+      <router-link
+        class="m-0 navbar-brand"
+        :to="userStore.isLogin ? { name: 'FarmerDashboard' } : { name: 'BuyerDashboard' }"
+      >
         <img
           :src="darkMode || sidebarType === 'bg-default' ? logoWhite : logo"
           class="navbar-brand-img h-100"

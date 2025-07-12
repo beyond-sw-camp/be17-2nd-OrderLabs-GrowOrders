@@ -1,9 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Dashboard from "../views/Dashboard.vue";
+import FarmerDashboard from "../views/Dashboard.vue";
+import BuyerDashboard from "../views/BuyerDashboard.vue";
 import Tables from "../views/Tables.vue";
-import Billing from "../views/Billing.vue";
 import VirtualReality from "../views/VirtualReality.vue";
-// import RTL from "../views/Rtl.vue";
 import Profile from "../views/Profile.vue";
 import Signup from "../views/Signup.vue";
 import Signin from "../views/Signin.vue";
@@ -29,52 +28,52 @@ const routes = [
   {
     path: "/",
     name: "/",
-    redirect: "/dashboard-default",
+    component: Signin
   },
   {
-    path: "/dashboard-default",
-    name: "Dashboard",
-    component: Dashboard,
+    path: "/farmer/dashboard",
+    name: "FarmerDashboard",
+    component: FarmerDashboard
+  },
+  {
+    path: "/buyer/dashboard",
+    name: "BuyerDashboard",
+    component: BuyerDashboard
   },
   {
     path: "/tables",
     name: "Tables",
-    component: Tables,
-  },
-  {
-    path: "/billing",
-    name: "Billing",
-    component: Billing,
+    component: Tables
   },
   {
     path: "/virtual-reality",
     name: "Virtual Reality",
-    component: VirtualReality,
+    component: VirtualReality
   },
   {
     path: "/error",
     name: "Error",
-    component: Error,
+    component: Error
   },
   {
     path: "/profile",
     name: "Profile",
-    component: Profile,
+    component: Profile
   },
   {
     path: "/signin",
     name: "Signin",
-    component: Signin,
+    component: Signin
   },
   {
     path: "/signup",
     name: "Signup",
-    component: Signup,
+    component: Signup
   },
   {
     path: "/buyerlist",
     name: "BuyerList",
-    component: BuyerList,
+    component: BuyerList
   },
   {
     path: "/orders/:orderId",
@@ -91,36 +90,36 @@ const routes = [
   {
     path: "/farmlist",
     name: "FarmList",
-    component: FarmList,
+    component: FarmList
   },
   {
     path: "/farmerlist",
     name: "FarmerList",
-    component: FarmerList,
+    component: FarmerList
   },
   // 알림 추가
   {
     path: "/notification",
     name: "Notification",
-    component: Notification,
+    component: Notification
   },
   // 생물 추가
   {
     path: "/crop-register",
     name: "Crop Register",
-    component: Crop_register,
+    component: Crop_register
   },
   // 농장 추가
   {
     path: "/farm-register",
     name: "Farm Register",
-    component: Farm_register,
+    component: Farm_register
   },
   // 판매량 조회
   {
     path: "/sales",
     name: "Sales",
-    component: Sales,
+    component: Sales
   },
   // 재고 관리
   {

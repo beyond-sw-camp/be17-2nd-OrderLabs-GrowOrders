@@ -43,8 +43,8 @@ onMounted(() => {
     <ul class="navbar-nav">
       <li class="nav-item" v-if="type === 1">
         <sidenav-item
-          to="/dashboard-default"
-          :class="getRoute() === 'dashboard-default' ? 'active' : ''"
+          to="/farmer/dashboard"
+          :class="getRoute() === 'FarmerDashboard' ? 'active' : ''"
           :navText="isRTL ? 'لوحة القيادة' : '농부 메인 화면'"
         >
           <template v-slot:icon>
@@ -55,8 +55,8 @@ onMounted(() => {
 
       <li class="nav-item" v-if="type === 2">
         <sidenav-item
-          to="/billing"
-          :class="getRoute() === 'Billing' ? 'active' : ''"
+          to="/buyer/dashboard"
+          :class="getRoute() === 'BuyerDashboard' ? 'active' : ''"
           :navText="isRTL ? 'لوحة القيادة' : '주문자 메인 화면'"
         >
           <template v-slot:icon>

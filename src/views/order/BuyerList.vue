@@ -112,10 +112,7 @@ onMounted(async () => {
                     class="badge text-xs badge-sm bg-gradient-success text-white"
                     style="text-decoration: none;"
                   >
-                  <a href="/order-page" class="badge text-xs badge-sm bg-gradient-success text-white"
-                    style="text-decoration: none;">
-                    상세보기
-                  </a>
+                  상세보기
                   </router-link>
                 </td>
               </tr>

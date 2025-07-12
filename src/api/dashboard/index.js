@@ -3,7 +3,7 @@ import api from "@/plugins/axiosinterceptor";
 // 백엔드 호출 후 받은 데이터를 반환
 const orderList = async () => {
     let data = {};
-    let url = '/api/orderlist.json';
+    let url = '/api/orderList.json';
 
     await api.get(url)
         .then((res) => {

@@ -33,7 +33,7 @@ const buyerList = async (req) => {
 
 const orderList = async () => {
     let data = {};
-    let url = '/api/OrderList.json';
+    let url = '/api/orderList.json';
 
     await api.get(url)
         .then((res) => {
