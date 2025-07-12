@@ -1,7 +1,7 @@
 <img width="3312" height="1107" alt="Image" src="https://github.com/user-attachments/assets/319894c4-7d18-4be0-afa1-598fb2517989" />
 <br>
 
-## 🧑🏻‍🌾 프로젝트 소개
+## 🧑🏻‍🌾 Front-end 프로젝트 소개
 <br>
 <div>
   <h3 align="center">
@@ -24,19 +24,7 @@
 
 <br><br>
 
-## 🕵️ 팀원 소개
-<br>
-<div align="center">
-
-| <img src="https://avatars.githubusercontent.com/u/149382180?v=4" width="100" height="100"/> | <img src="https://avatars.githubusercontent.com/u/96688099?v=4" width="100" height="100"/> | <img src="https://avatars.githubusercontent.com/u/195714592?v=4" width="100" height="100"/> | <img src="https://avatars.githubusercontent.com/u/92301360?v=4" width="100" height="100"/> | <img src="https://avatars.githubusercontent.com/u/201225844?v=4" width="100" height="100"/> |
-| :-----------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------: |
-|                 🦊 **양승우**<br/>[@atimaby28](https://github.com/miyad927)                 |                🐻 **이시욱**<br/>[@David9733](https://github.com/David9733)                |                 🦎 **구창모**<br/>[@kucha240](https://github.com/kucha240)                  |                🐰 **유현경**<br/>[@gaangstar](https://github.com/gaangstar)                |                  🐱 **윤소민**<br/>[@somminn](https://github.com/somminn)                   |
-
-</div>
-
-<br><br>
-
-## 🧶 주요 기술 설명 및 화면
+#### - 주요 기술 설명 및 화면
 
 <img width="2240" height="1260" alt="Image" src="https://github.com/user-attachments/assets/5d36d09e-1e2c-4370-b5e6-fd811291ab56" />
 
@@ -61,6 +49,27 @@ Pinia에 저장된 로그인 정보를 이용하여 Navigation Guards를 통해 
 <br><br>
 
 
+## 🔗 도메인 주소
+<br>
+
+[GrowOrders 도메인 주소](https://www.be17.site)
+
+<br><br>
+
+
+## 🕵️ 팀원 소개
+<br>
+<div align="center">
+
+| <img src="https://avatars.githubusercontent.com/u/149382180?v=4" width="100" height="100"/> | <img src="https://avatars.githubusercontent.com/u/96688099?v=4" width="100" height="100"/> | <img src="https://avatars.githubusercontent.com/u/195714592?v=4" width="100" height="100"/> | <img src="https://avatars.githubusercontent.com/u/92301360?v=4" width="100" height="100"/> | <img src="https://avatars.githubusercontent.com/u/201225844?v=4" width="100" height="100"/> |
+| :-----------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------: |
+|                 🦊 **양승우**<br/>[@atimaby28](https://github.com/miyad927)                 |                🐻 **이시욱**<br/>[@David9733](https://github.com/David9733)                |                 🦎 **구창모**<br/>[@kucha240](https://github.com/kucha240)                  |                🐰 **유현경**<br/>[@gaangstar](https://github.com/gaangstar)                |                  🐱 **윤소민**<br/>[@somminn](https://github.com/somminn)                   |
+
+</div>
+
+<br><br>
+
+
 ## 🛠️ 기술 스택
 <br>
 <div>
@@ -76,12 +85,7 @@ Pinia에 저장된 로그인 정보를 이용하여 Navigation Guards를 통해 
 <img src="https://img.shields.io/badge/discord-5865F2?style=for-the-badge&logo=discord&logoColor=white">
 </div>
 
-<br><br>
 
-## 🔗 도메인 주소
-<br>
-
-[Front-end 도메인 주소](https://www.be17.site)
 <br><br>
 
 ## 🖥️ 화면 설계서
