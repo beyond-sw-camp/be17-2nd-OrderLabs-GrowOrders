@@ -36,6 +36,31 @@
 
 <br><br>
 
+## 🧶 주요 기술 설명 및 화면
+
+<img width="2240" height="1260" alt="Image" src="https://github.com/user-attachments/assets/5d36d09e-1e2c-4370-b5e6-fd811291ab56" />
+
+<br>
+
+Pinia에 저장된 로그인 정보를 이용하여 Navigation Guards를 통해 첫 화면으로 이동합니다. 저장된 정보가 없다면 로그인 화면으로 이동합니다.
+
+<br><br>
+
+#### - 농부로 로그인 했을 때
+
+<img width="1887" height="883" alt="Image" src="https://github.com/user-attachments/assets/b9cdac43-c625-438c-aac1-94a981de9a39" />
+
+
+<br><br>
+
+#### - 구매자로 로그인 했을 때
+
+<img width="1887" height="907" alt="Image" src="https://github.com/user-attachments/assets/125bd5d4-a311-46f9-8808-654f7fb7b256" />
+
+
+<br><br>
+
+
 ## 🛠️ 기술 스택
 <br>
 <div>
@@ -50,28 +75,6 @@
 <img src="https://img.shields.io/badge/figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white">
 <img src="https://img.shields.io/badge/discord-5865F2?style=for-the-badge&logo=discord&logoColor=white">
 </div>
-
-<br><br>
-
-## 🧶 주요 기술 설명 및 화면
-
-<img width="1887" height="883" alt="Image" src="https://github.com/user-attachments/assets/b9cdac43-c625-438c-aac1-94a981de9a39" />
-
-Pinia에 저장된 로그인 정보를 이용하여 Navigation Guards를 통해 첫 화면으로 이동합니다. 저장된 정보가 없다면 로그인 화면으로 이동합니다.
-
-<br><br>
-
-#### - 농부로 로그인 했을 때
-
-<img width="1887" height="907" alt="Image" src="https://github.com/user-attachments/assets/125bd5d4-a311-46f9-8808-654f7fb7b256" />
-
-
-<br><br>
-
-#### - 구매자로 로그인 했을 때
-
-<img width="2240" height="1260" alt="Image" src="https://github.com/user-attachments/assets/5d36d09e-1e2c-4370-b5e6-fd811291ab56" />
-
 
 <br><br>
 
