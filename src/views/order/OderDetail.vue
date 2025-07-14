@@ -23,7 +23,6 @@ onMounted(async () => {
     item.value = data.value.find(obj => obj.orderId == orderId)
     farm.value = data2.value.find(obj => obj.farmId == item.value.farmId)
 
-    console.log("qdqwdqwdqwd", farm.value);
     if (!item.value) {
       console.warn('해당 orderId의 주문 정보가 없습니다.')
     } else {
@@ -31,7 +30,7 @@ onMounted(async () => {
     }
   } catch (err) {
     console.error('orderList 호출 실패:', err)
-  }console.log(item.value);
+  }
 })
 
 function handleCropChange(event) {

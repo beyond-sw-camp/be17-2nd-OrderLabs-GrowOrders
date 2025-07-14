@@ -37,8 +37,6 @@ const notiData = ref([]);
 onMounted(async () => {
   try {
     const res = await api.notification();
-    console.log('📦 API 응답:', res);
-    console.log('🔍 res.data:', res.data);
     notiData.value = res.data;
     console.log(notiData.value);
   } catch (error) {

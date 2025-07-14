@@ -23,13 +23,6 @@ const mode = ref('register')
 
 // 등록버튼 누를때 실행되는 함수
 function handleSubmit() {
-  console.log("농장 등록 실행")
-  console.log("농장 이름:", farmName.value)
-  console.log("소재 지역:", selectedLocation.value)
-  console.log("상세 주소:", addressDetail.value)
-  console.log("면적:", area.value)
-  console.log("소개:", description.value)
-  console.log("사진 미리보기 URL:", previewUrl.value)
 
   mode.value = 'detail'
 

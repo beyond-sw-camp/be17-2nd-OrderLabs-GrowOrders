@@ -20,12 +20,10 @@ export const useUserStore = defineStore('user', () => {
 
         if (data) {
             isLogin.value = true;
-            userInfo.value = data; // userInfo도 업데이트
-            console.log('User found in storage:', data);
+            userInfo.value = data;
         } else {
             isLogin.value = false;
             userInfo.value = null;
-            console.log('No user found in storage');
         }
 
         return isLogin.value;
@@ -43,7 +41,6 @@ export const useUserStore = defineStore('user', () => {
         encryptStorage.setItem(key, user);
         isLogin.value = true;
         userInfo.value = user;
-        console.log('User logged in:', user);
     };
 
     const logout = () => {
@@ -51,7 +48,6 @@ export const useUserStore = defineStore('user', () => {
         isLogin.value = false;
         userInfo.value = null;
         router.push('/signin');
-        console.log('User logged out');
     };
 
     // 앱 시작 시 자동으로 로그인 상태 확인

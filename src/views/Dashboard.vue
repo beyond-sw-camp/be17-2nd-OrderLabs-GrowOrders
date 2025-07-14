@@ -99,16 +99,9 @@ const top4Orders = computed(() => {
   return [...list.slice(-4)].reverse();
 });
 
-console.log("vrwefwfwe", top4Orders);
-
 onMounted(async () => {
   await getOrderList();
   await getData();
-  console.log(state.orderList.value);
-  console.log(state.summaryData);
-  console.log(state.farmMonitoringData);
-  console.log(state.chartData);
-  console.log(state.farmStatus)
 });
 
 // const router = useRouter()

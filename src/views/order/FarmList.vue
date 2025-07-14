@@ -9,13 +9,11 @@ onMounted(async () => {
   try {
     const res = await api.farmList();
     farmData.value = res.map(item => item.data);
-    console.log(farmData.value);
   } catch (error) {
     console.error('API 호출 오류:', error);
   }
 });
 
-console.log(farmData.value);
 </script>
 <template>
 <div class="card mb-4">

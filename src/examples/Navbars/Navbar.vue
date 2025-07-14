@@ -22,7 +22,7 @@ const checkAuth = async () => {
 
 const username = computed(() => {
   return userStore.isLogin && userStore.userInfo 
-    ? userStore.userInfo.nickname 
+    ? userStore.userInfo.name 
     : 'Guest';
 });
 
@@ -51,7 +51,6 @@ onMounted(() => {
 });
 
 const userTypeName = computed(() => {
-  console.log("USER TYPE" + userStore.userInfo.type);
   if (!userStore.userInfo) return '';
   return userStore.userInfo.type === 1
     ? '농부님'

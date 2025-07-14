@@ -9,7 +9,6 @@ const getInventoryAPI = async (request) => {
     .get(url, request)
     .then((response) => {
       data = response.data;
-      console.log(data);
     })
     .catch((error) => {
       data = error.data;

@@ -23,7 +23,6 @@ const dashboardNav = async () => {
     await api.get(url)
         .then((res) => {
             data = res.data;
-            console.log(data);
         })
         .catch((error) => {
             data = error.data;

@@ -20,7 +20,6 @@ const getFarmsList = async () => {
   if (data && data.success) {
     if (data.results) {
       farmsList.push(...data.results.farms)
-      console.log(farmsList[0])
     } else {
       console.log('data.results 없음')
     }

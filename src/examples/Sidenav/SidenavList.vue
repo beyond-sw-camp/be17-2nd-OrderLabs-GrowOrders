@@ -21,7 +21,6 @@ const checkType = async () => {
   }
 
   type.value = userStore.userInfo.type;
-  console.log("로그인 타입:", type.value);
 };
 
 const getRoute = () => {

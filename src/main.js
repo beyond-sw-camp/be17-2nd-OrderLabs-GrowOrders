@@ -20,8 +20,6 @@ router.beforeEach((to, from, next) => {
     if (to.path === "/") {
         const type = userStore.userInfo?.type;
 
-        console.log("Dqdqwdqwdqwqxdgrrjhytjtuk", type)
-
         if (type === 1) {
             next({ name: "FarmerDashboard" });
         } else if (type === 2) {

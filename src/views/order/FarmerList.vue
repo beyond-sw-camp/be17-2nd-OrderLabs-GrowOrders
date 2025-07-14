@@ -20,7 +20,6 @@ onMounted(async () => {
   try {
     const res = await api.farmerList();
     farmerData.value = res.map(item => item.data);
-    console.log(farmerData.value);
   } catch (error) {
     console.error('API 호출 오류:', error);
   }

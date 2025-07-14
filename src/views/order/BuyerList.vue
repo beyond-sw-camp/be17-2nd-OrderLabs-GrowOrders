@@ -19,7 +19,6 @@ onMounted(async () => {
   try {
     const res = await api.buyerList();
     buyerData.value = res.map(item => item.data);
-    console.log(buyerData.value);
   } catch (error) {
     console.error('API 호출 오류:', error);
   }

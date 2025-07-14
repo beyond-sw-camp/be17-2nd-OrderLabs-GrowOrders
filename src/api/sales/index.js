@@ -9,12 +9,9 @@ const getTotalSalesAPI = async (request) => {
     .get(url, request)
     .then((response) => {
       data = response.data;
-      console.log("sales/index.js 검색 데이터");
-      console.log(data);
     })
     .catch((error) => {
       data = error.data;
-      console.log("dqwdqwdqw");
     });
 
   return data;

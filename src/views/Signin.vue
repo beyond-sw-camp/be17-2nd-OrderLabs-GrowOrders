@@ -54,29 +54,26 @@ const onSubmit = async () => {
   signinForm.password = password.value;
   signinForm.loginType = loginType.value;
 
-
-  let data;
+  let userResp = {};
   if (loginType.value === 1) {
-    data = await farmerApi.farmerList(signinForm);
+    userResp = await farmerApi.farmerInfo(signinForm);
   } else {
-    data = await farmerApi.buyerList(signinForm);
+    userResp = await farmerApi.buyerInfo(signinForm);
   }
 
-  console.log("QWDQWDQWDQWd", signinForm);
+if (userResp && userResp.status === "success" && userResp.data) {
+    userStore.login(userResp.data);
 
-  if (data && data.length > 0) {
-    userStore.login(data[0]);
-    router.push("/");
+    if (loginType.value === 1) {
+      router.push("/farmer/dashboard");
+    } else {
+      router.push("/buyer/dashboard");
+    }
   } else {
     alert("로그인에 실패했습니다.");
   }
-
-  if (loginType.value === 1) {
-    router.push("/farmer/dashboard");
-  } else {
-    router.push("/buyer/dashboard");
-  }
 };
+
 </script>
 
 <template>
@@ -110,6 +107,7 @@ const onSubmit = async () => {
                         type="email"
                         placeholder="이메일"
                         name="email"
+                        id="emailInput"
                         size="lg"
                         @keyup.enter="onSubmit"
                       />
@@ -120,6 +118,7 @@ const onSubmit = async () => {
                         type="password"
                         placeholder="비밀번호"
                         name="password"
+                        id="passwordInput"
                         size="lg"
                         @keyup.enter="onSubmit"
                       />
@@ -130,7 +129,7 @@ const onSubmit = async () => {
 
                     <argon-switch 
                       v-model="rememberMe"
-                      id="rememberMe" 
+                      id="rememberMeSwitch" 
                       name="remember-me"
                     >
                       기억하기
