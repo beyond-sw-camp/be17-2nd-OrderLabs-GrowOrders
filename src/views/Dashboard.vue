@@ -68,14 +68,15 @@ const state = reactive({
 });
 
 const getData = async () => {
-  const getSummary = await api.dashboardNav();
-  const getFarmstatus = await api.farmStatus();
-  const getChart = await api.chartData();
-  const getStatus = await api.farmStatus();
-  state.summaryData = getSummary.summary;
+
+  const getSummary = await api.dashboardNav() ?? {};
+  const getFarmstatus = await api.farmStatus() ?? {};
+  const getChart = await api.chartData() ?? {};
+  const getStatus = await api.farmStatus() ?? {};
+
+  state.summaryData = getSummary.summary ?? [];
   state.farmMonitoringData = getFarmstatus;
   state.chartData = getChart;
-  console.log(state.chartData);
   state.farmStatus = getStatus;
 };
 
@@ -93,8 +94,10 @@ const getImageUrl = (imgName) => {
   }
 };
 
-const top4Orders = computed(() => [...state.orderList.slice(-4)].reverse());
-
+const top4Orders = computed(() => {
+  const list = state.orderList || [];
+  return [...list.slice(-4)].reverse();
+});
 
 console.log("vrwefwfwe", top4Orders);
 
